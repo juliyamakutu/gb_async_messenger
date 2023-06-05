@@ -15,6 +15,7 @@ class PresenceRequest(Request):
     class User(BaseModel):
         account_name: str
         status: str
+
     action: str = "presence"
     type: str | None
     user: User

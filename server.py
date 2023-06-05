@@ -1,15 +1,16 @@
 import json
 from socket import AF_INET, SOCK_STREAM, socket
-from jim_types import PresenceRequest, Response
-from pydantic import ValidationError
 
 import typer
+from pydantic import ValidationError
 from typing_extensions import Annotated
+
+from jim_types import PresenceRequest, Response
 
 
 def main(
-        host: Annotated[str, typer.Option("-a")] = "",
-        port: Annotated[int, typer.Option("-p")] = 7777
+    host: Annotated[str, typer.Option("-a")] = "",
+    port: Annotated[int, typer.Option("-p")] = 7777,
 ):
     s = socket(AF_INET, SOCK_STREAM)
     s.bind((host, port))
@@ -22,7 +23,9 @@ def main(
                 print("Connected by", addr)
                 data = conn.recv(4096)
                 try:
-                    request = PresenceRequest(**json.loads(data.decode(encoding="utf-8")))
+                    request = PresenceRequest(
+                        **json.loads(data.decode(encoding="utf-8"))
+                    )
                 except (json.JSONDecodeError, ValidationError):
                     print("Invalid data")
                     conn.close()

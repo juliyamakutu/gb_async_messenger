@@ -1,9 +1,10 @@
 import json
 from datetime import datetime
 from socket import AF_INET, SOCK_STREAM, socket
-from jim_types import PresenceRequest, Response
 
 import typer
+
+from jim_types import PresenceRequest, Response
 
 
 def main(addr: str, port: int = typer.Argument(default=7777)):
@@ -11,10 +12,7 @@ def main(addr: str, port: int = typer.Argument(default=7777)):
         action="presence",
         time=datetime.now().timestamp(),
         type="status",
-        user=PresenceRequest.User(
-            account_name="Guest",
-            status="Yep, I am here!"
-        )
+        user=PresenceRequest.User(account_name="Guest", status="Yep, I am here!"),
     )
     with socket(AF_INET, SOCK_STREAM) as s:
         s.connect((addr, port))
