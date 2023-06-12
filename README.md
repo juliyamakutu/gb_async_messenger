@@ -1,1 +1,2 @@
-# gb_async_messenger
+# amsg
+GeekBrains Python Advanced course homeworks. Asynchronous messaging.
