@@ -1,4 +1,3 @@
-import logging
 import sys
 from socket import AF_INET, SOCK_STREAM, socket
 
@@ -6,13 +5,10 @@ import typer
 from pydantic import ValidationError
 from typing_extensions import Annotated
 
-from common import PresenceRequest, Response, recv_message, send_message, ReceiveError
+from common import (PresenceRequest, ReceiveError, Response, recv_message,
+                    send_message)
 from config import server_config as config
-
-
-logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+from log import server_logger as logger
 
 
 def parse_message(msg: dict) -> Response:
@@ -21,11 +17,12 @@ def parse_message(msg: dict) -> Response:
         try:
             PresenceRequest(**msg)
         except ValidationError:
-            logger.warning("Invalid presence message")
+            logger.warning("Invalid presence message: %s", msg)
             return Response(response=400, alert="Bad Request")
+        logger.info("Presence message received from user %s", msg["user"]["account_name"])
         return Response(response=200, alert="OK")
     else:
-        logger.warning("Unknown message type")
+        logger.warning("Unknown message type: %s", msg_action)
         return Response(response=400, alert="Bad Request")
 
 
@@ -36,16 +33,16 @@ def main(
     s = socket(AF_INET, SOCK_STREAM)
     s.bind((host, port))
     s.listen(config.max_connections)
-    logger.info("Server started")
+    logger.info("Server started on %s:%s", host, port)
     try:
         while True:
             conn, addr = s.accept()
             with conn:
-                logger.info(f"Connected by {addr}")
+                logger.info(f"Connected by %s", addr)
                 try:
                     msg = recv_message(conn=conn)
                 except ReceiveError:
-                    logger.warning("Invalid message received")
+                    logger.warning("Invalid message received (%s)", msg)
                     conn.close()
                     continue
                 response = parse_message(msg=msg)

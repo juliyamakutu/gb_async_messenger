@@ -1,9 +1,10 @@
 import json
 from socket import socket
 
+from config import base_config as config
+
 from .exceptions import ReceiveError
 from .jim_types import Request, Response
-from config import base_config as config
 
 
 def send_message(conn: socket, message: Request | Response) -> None:
