@@ -1,0 +1,39 @@
+2023-06-12 01:50:31,487 INFO server_log_config.py info message
+2023-06-12 01:50:31,487 WARNING server_log_config.py warning message
+2023-06-12 01:50:31,487 ERROR server_log_config.py error message
+2023-06-12 01:50:31,487 CRITICAL server_log_config.py critical message
+2023-06-12 01:51:08,189 INFO server.py Server started
+2023-06-12 01:51:12,466 INFO server.py Connected by ('127.0.0.1', 60457)
+2023-06-12 01:51:20,063 INFO server.py Connected by ('127.0.0.1', 60458)
+2023-06-12 01:57:29,678 INFO server.py Server stopped by user
+2023-06-12 01:57:29,681 INFO server.py Server stopped
+2023-06-12 01:57:30,646 INFO server.py Server started on :7777
+2023-06-12 01:57:35,738 INFO server.py Connected by ('127.0.0.1', 60520)
+2023-06-12 01:58:13,626 INFO server.py Connected by ('127.0.0.1', 60525)
+2023-06-12 01:58:25,758 INFO server.py Connected by ('127.0.0.1', 60527)
+2023-06-12 01:58:54,622 INFO server.py Connected by ('127.0.0.1', 60531)
+2023-06-12 01:59:17,636 INFO server.py Server stopped by user
+2023-06-12 01:59:17,637 INFO server.py Server stopped
+2023-06-12 01:59:38,152 INFO server.py Server started on :7777
+2023-06-12 01:59:41,487 INFO server.py Connected by ('127.0.0.1', 60535)
+2023-06-12 01:59:50,130 INFO server.py Connected by ('127.0.0.1', 60538)
+2023-06-12 01:59:52,143 INFO server.py Connected by ('127.0.0.1', 60539)
+2023-06-12 02:00:35,953 INFO server.py Server stopped by user
+2023-06-12 02:00:35,954 INFO server.py Server stopped
+2023-06-12 02:00:36,853 INFO server.py Server started on :7777
+2023-06-12 02:00:38,261 INFO server.py Connected by ('127.0.0.1', 60543)
+2023-06-12 02:00:38,261 INFO server.py Presence message received from user Guest
+2023-06-12 02:00:46,468 INFO server.py Connected by ('127.0.0.1', 60544)
+2023-06-12 02:00:46,468 INFO server.py Presence message received from user Guest
+2023-06-12 02:53:15,827 INFO server.py Server stopped by user
+2023-06-12 02:53:15,830 INFO server.py Server stopped
+2023-06-12 02:53:19,592 INFO server.py Server started on :7777
+2023-06-12 02:53:26,448 INFO server.py Server stopped
+2023-06-12 02:53:40,553 INFO server.py Server started on :7777
+2023-06-12 02:53:50,524 INFO server.py Connected by ('127.0.0.1', 61615)
+2023-06-12 02:53:50,525 INFO server.py Presence message received from user Guest
+2023-06-12 02:54:50,963 INFO server.py Server stopped by user
+2023-06-12 02:54:50,965 INFO server.py Server stopped
+2023-06-12 02:54:52,565 INFO server.py Server started on :7777
+2023-06-12 02:54:54,195 INFO server.py Server stopped by user
+2023-06-12 02:54:54,195 INFO server.py Server stopped

@@ -1,0 +1,33 @@
+2023-06-12 01:30:55,796 WARNING client_log_config.py warning message
+2023-06-12 01:30:55,796 ERROR client_log_config.py error message
+2023-06-12 01:30:55,796 CRITICAL client_log_config.py critical message
+2023-06-12 01:50:25,101 INFO client_log_config.py info message
+2023-06-12 01:50:25,101 WARNING client_log_config.py warning message
+2023-06-12 01:50:25,101 ERROR client_log_config.py error message
+2023-06-12 01:50:25,101 CRITICAL client_log_config.py critical message
+2023-06-12 01:51:12,466 INFO client.py Sending presence request
+2023-06-12 01:51:12,467 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:51:20,063 INFO client.py Sending presence request
+2023-06-12 01:51:20,063 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:58:25,761 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:58:54,622 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 01:58:54,622 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 01:58:54,622 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:59:41,487 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 01:59:41,488 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 01:59:41,488 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:59:50,130 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 01:59:50,130 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 01:59:50,130 INFO client.py Response code 200 with message 'OK'
+2023-06-12 01:59:52,143 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 01:59:52,143 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 01:59:52,144 INFO client.py Response code 200 with message 'OK'
+2023-06-12 02:00:38,260 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 02:00:38,261 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 02:00:38,261 INFO client.py Response code 200 with message 'OK'
+2023-06-12 02:00:46,468 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 02:00:46,468 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 02:00:46,468 INFO client.py Response code 200 with message 'OK'
+2023-06-12 02:53:50,524 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-12 02:53:50,525 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-12 02:53:50,525 INFO client.py Response code 200 with message 'OK'
