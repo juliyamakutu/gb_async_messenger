@@ -1,14 +1,19 @@
 [tool.pdm]
 
+[tool.pdm.scripts]
+_.env = {PYTHONPATH = "src"}
+server.cmd = "python src/server.py"
+client.cmd = "python src/client.py"
+
 [tool.pytest.ini_options]
 pythonpath = [
-  ".", "src",
+  "src",
 ]
 
 [project]
-name = ""
-version = ""
-description = ""
+name = "amsg"
+version = "0.5"
+description = "GB async messenger"
 authors = [
     {name = "Yuliya Bryukhovskikh", email = "makutu@ereb.ru"},
 ]
@@ -17,5 +22,6 @@ dependencies = [
     "pydantic>=1.10.8",
     "pytest>=7.3.1",
 ]
+readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
