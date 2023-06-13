@@ -112,17 +112,16 @@ console.print(f"Переменная {fourth_word=} имеет тип {type(four
 # результаты из байтовового в строковый тип на кириллице.
 console.rule("[bold red]Задание 5:[/bold red]")
 
-args = ['ping', '-c', '3', 'yandex.ru']
-subproc_ping = subprocess.Popen(args, stdout=subprocess.PIPE)
+pings = (
+    ['ping', '-c', '3', 'yandex.ru'],
+    ['ping', '-c', '3', 'youtube.com'],
+)
+for args in pings:
+    subproc_ping = subprocess.Popen(args, stdout=subprocess.PIPE)
 
-for line in subproc_ping.stdout:
-    console.print(line.decode('cp866').encode('utf-8').decode('utf-8'))
-
-args = ['ping', '-c', '3', 'youtube.com']
-subproc_ping = subprocess.Popen(args, stdout=subprocess.PIPE)
-
-for line in subproc_ping.stdout:
-    console.print(line.decode('cp866').encode('utf-8').decode('utf-8'))
+    for line in subproc_ping.stdout:
+        encoding = chardet.detect(line)['encoding']
+        console.print(line.decode(encoding).encode('utf-8').decode('utf-8'))
 
 # Создать текстовый файл test_file.txt, заполнить его тремя строками:
 # «сетевое программирование», «сокет», «декоратор». Проверить кодировку
