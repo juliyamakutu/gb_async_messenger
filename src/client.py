@@ -5,10 +5,11 @@ import typer
 from pydantic import ValidationError
 
 from common import (PresenceRequest, ReceiveError, Response, recv_message,
-                    send_message)
+                    send_message, log)
 from log import client_logger as logger
 
 
+@log(logger)
 def make_presence_message(account_name: str, status: str) -> PresenceRequest:
 
     presence_request = PresenceRequest(

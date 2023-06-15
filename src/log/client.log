@@ -31,3 +31,32 @@
 2023-06-12 02:53:50,524 INFO client.py Sending presence request to 127.0.0.1:7777
 2023-06-12 02:53:50,525 INFO client.py Presence message for user Guest, status Yep, I am here! generated
 2023-06-12 02:53:50,525 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:30:13,354 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:30:13,355 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:30:13,356 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:30:49,170 INFO decorators.py Вызов функции main c параметрами (), {'addr': '127.0.0.1', 'port': 7777}
+2023-06-15 16:30:49,171 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:30:49,171 INFO decorators.py Вызов функции make_presence_message c параметрами (), {'account_name': 'Guest', 'status': 'Yep, I am here!'}
+2023-06-15 16:30:49,171 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:30:49,172 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:34:33,815 INFO decorators.py Вызов функции main c параметрами (), {'addr': '127.0.0.1', 'port': 7777} из модуля __main__
+2023-06-15 16:34:33,816 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:34:33,816 INFO decorators.py Вызов функции make_presence_message c параметрами (), {'account_name': 'Guest', 'status': 'Yep, I am here!'} из модуля __main__
+2023-06-15 16:34:33,816 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:34:33,817 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:36:28,125 INFO main.py Вызов функции main c параметрами (), {'addr': '127.0.0.1', 'port': 7777} из модуля __main__. Вы из фугкции wrapper
+2023-06-15 16:36:28,126 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:36:28,126 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'Guest', 'status': 'Yep, I am here!'} из модуля __main__. Вы из фугкции main
+2023-06-15 16:36:28,127 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:36:28,127 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:38:17,794 INFO main.py Вызов функции main c параметрами (), {'addr': '127.0.0.1', 'port': 7777} из модуля __main__. Вызов из функции typer.run(main). Вызов из фугнции wrapper.
+2023-06-15 16:38:17,795 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:38:17,795 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'Guest', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из фугнции main.
+2023-06-15 16:38:17,795 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:38:17,796 INFO client.py Response code 200 with message 'OK'
+2023-06-15 16:54:08,096 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-15 16:54:08,112 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'Guest', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-15 16:54:08,112 INFO client.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-15 16:54:08,113 INFO client.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60534), raddr=('127.0.0.1', 7777)>, 'message': PresenceRequest(action='presence', time='1686840848.112659', type='status', user=User(account_name='Guest', status='Yep, I am here!'))} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-15 16:54:08,114 INFO client.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60534), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-15 16:54:08,115 INFO client.py Response code 200 with message 'OK'
