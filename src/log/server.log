@@ -37,3 +37,39 @@
 2023-06-12 02:54:52,565 INFO server.py Server started on :7777
 2023-06-12 02:54:54,195 INFO server.py Server stopped by user
 2023-06-12 02:54:54,195 INFO server.py Server stopped
+2023-06-15 16:30:08,226 INFO server.py Server started on :7777
+2023-06-15 16:30:13,354 INFO server.py Connected by ('127.0.0.1', 60401)
+2023-06-15 16:30:13,356 INFO server.py Presence message received from user Guest
+2023-06-15 16:30:45,591 INFO server.py Server stopped by user
+2023-06-15 16:30:45,592 INFO server.py Server stopped
+2023-06-15 16:30:47,400 INFO decorators.py Вызов функции main c параметрами (), {'host': '', 'port': 7777}
+2023-06-15 16:30:47,400 INFO server.py Server started on :7777
+2023-06-15 16:30:49,171 INFO server.py Connected by ('127.0.0.1', 60406)
+2023-06-15 16:30:49,172 INFO decorators.py Вызов функции parse_message c параметрами (), {'msg': {'action': 'presence', 'time': '1686839449.171845', 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'Yep, I am here!'}}}
+2023-06-15 16:30:49,172 INFO server.py Presence message received from user Guest
+2023-06-15 16:34:31,197 INFO server.py Server stopped
+2023-06-15 16:34:32,454 INFO decorators.py Вызов функции main c параметрами (), {'host': '', 'port': 7777} из модуля __main__
+2023-06-15 16:34:32,454 INFO server.py Server started on :7777
+2023-06-15 16:34:33,816 INFO server.py Connected by ('127.0.0.1', 60431)
+2023-06-15 16:34:33,817 INFO decorators.py Вызов функции parse_message c параметрами (), {'msg': {'action': 'presence', 'time': '1686839673.816892', 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'Yep, I am here!'}}} из модуля __main__
+2023-06-15 16:34:33,817 INFO server.py Presence message received from user Guest
+2023-06-15 16:36:14,456 INFO server.py Server stopped by user
+2023-06-15 16:36:14,456 INFO server.py Server stopped
+2023-06-15 16:36:26,342 INFO main.py Вызов функции main c параметрами (), {'host': '', 'port': 7777} из модуля __main__. Вы из фугкции wrapper
+2023-06-15 16:36:26,342 INFO server.py Server started on :7777
+2023-06-15 16:36:28,126 INFO server.py Connected by ('127.0.0.1', 60445)
+2023-06-15 16:36:28,127 INFO server.py Вызов функции parse_message c параметрами (), {'msg': {'action': 'presence', 'time': '1686839788.126987', 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'Yep, I am here!'}}} из модуля __main__. Вы из фугкции main
+2023-06-15 16:36:28,127 INFO server.py Presence message received from user Guest
+2023-06-15 16:38:06,834 INFO server.py Server stopped
+2023-06-15 16:38:16,293 INFO main.py Вызов функции main c параметрами (), {'host': '', 'port': 7777} из модуля __main__. Вызов из функции typer.run(main). Вызов из фугнции wrapper.
+2023-06-15 16:38:16,293 INFO server.py Server started on :7777
+2023-06-15 16:38:17,795 INFO server.py Connected by ('127.0.0.1', 60457)
+2023-06-15 16:38:17,796 INFO server.py Вызов функции parse_message c параметрами (), {'msg': {'action': 'presence', 'time': '1686839897.795751', 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'Yep, I am here!'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из фугнции main.
+2023-06-15 16:38:17,796 INFO server.py Presence message received from user Guest
+2023-06-15 16:53:47,083 INFO server.py Server stopped by user
+2023-06-15 16:54:06,161 INFO server.py Server started on :7777
+2023-06-15 16:54:08,096 INFO server.py Connected by ('127.0.0.1', 60534)
+2023-06-15 16:54:08,112 INFO server.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60534)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-15 16:54:08,114 INFO server.py Вызов функции parse_message c параметрами (), {'msg': {'action': 'presence', 'time': '1686840848.112659', 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'Yep, I am here!'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-15 16:54:08,114 INFO server.py Presence message received from user Guest
+2023-06-15 16:54:08,115 INFO server.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60534)>, 'message': Response(response=200, alert='OK')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.

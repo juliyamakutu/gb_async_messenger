@@ -6,11 +6,12 @@ from pydantic import ValidationError
 from typing_extensions import Annotated
 
 from common import (PresenceRequest, ReceiveError, Response, recv_message,
-                    send_message)
+                    send_message, log)
 from config import server_config as config
 from log import server_logger as logger
 
 
+@log(logger)
 def parse_message(msg: dict) -> Response:
     msg_action = msg.get("action")
     if msg_action == "presence":
