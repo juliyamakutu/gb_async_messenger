@@ -17,14 +17,14 @@ def parse_message(msg: dict) -> Request | None:
     msg_action = msg.get("action")
     if msg_action == "presence":
         try:
-            PresenceRequest(**msg)
+            parsed_message = PresenceRequest(**msg)
         except ValidationError:
             logger.warning("Invalid presence message: %s", msg)
             return None
         logger.info("Presence message received from user %s", msg["user"]["account_name"])
-    if msg_action == "msg":
+    elif msg_action == "msg":
         try:
-            ChatMessageRequest(**msg)
+            parsed_message = ChatMessageRequest(**msg)
         except ValidationError:
             logger.warning("Invalid message: %s", msg)
             return None
@@ -32,6 +32,7 @@ def parse_message(msg: dict) -> Request | None:
     else:
         logger.warning("Unknown message type: %s", msg_action)
         return None
+    return parsed_message
 
 
 @log(logger)
@@ -48,43 +49,41 @@ def parse_messages(messages: dict) -> (dict, dict):
     return parsed_messages, responses
 
 
-@log(logger)
 def read_clients(clients: list, all_clients: list) -> dict:
     messages = {}
     for client in clients:
         try:
             msg = recv_message(conn=client)
         except ReceiveError:
-            logger.warning("Invalid message received from client %s", client.getpeername())
+            logger.warning("Invalid message received from client")
             continue
-        except:
-            logger.error("Client %s disconnected", client.getpeername())
+        except (OSError, ConnectionResetError):
+            logger.error("Client disconnected")
             all_clients.remove(client)
             continue
-        messages[client] = msg
+        if msg:
+            messages[client] = msg
     return messages
 
 
-@log(logger)
 def write_clients(clients: list, all_clients: list, messages: dict) -> None:
     for client in clients:
-        for sender, message in messages:
+        for sender, message in messages.items():
             if sender != client:
                 try:
                     send_message(conn=client, message=message)
-                except:
-                    logger.error("Client %s disconnected", client.getpeername())
+                except (OSError, ConnectionResetError):
+                    logger.error("Client disconnected")
                     all_clients.remove(client)
                     continue
 
 
-@log(logger)
 def write_response(responses: dict, all_clients: list) -> None:
     for client, message in responses.items():
         try:
             send_message(conn=client, message=message)
-        except:
-            logger.error("Client %s disconnected", client.getpeername())
+        except (OSError, ConnectionResetError):
+            logger.error("Client disconnected")
             all_clients.remove(client)
             continue
 
@@ -111,14 +110,20 @@ def main(
             finally:
                 read_list = []
                 write_list = []
-                try:
-                    read_list, write_list, _ = select.select(clients, clients, [], 10)
-                except:
-                    pass
-                message = read_clients(clients=read_list, all_clients=clients)
-                parsed_messages, responses = parse_messages(messages=message)
-                write_response(responses=responses, all_clients=clients)
-                write_clients(clients=write_list, all_clients=clients, messages=responses)
+                messages = {}
+                parsed_messages = {}
+                if clients:
+                    try:
+                        read_list, write_list, _ = select.select(clients, clients, [], 10)
+                    except OSError:
+                        pass
+                if read_list:
+                    messages = read_clients(clients=read_list, all_clients=clients)
+                if messages:
+                    parsed_messages, responses = parse_messages(messages=messages)
+                    write_response(responses=responses, all_clients=clients)
+                if write_list and parsed_messages:
+                    write_clients(clients=write_list, all_clients=clients, messages=parsed_messages)
 
     except KeyboardInterrupt:
         logger.info("Server stopped by user")
