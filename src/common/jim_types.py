@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Request(BaseModel):
@@ -19,3 +19,10 @@ class PresenceRequest(Request):
     action: str = "presence"
     type: str | None
     user: User
+
+
+class ChatMessageRequest(Request):
+    action = "msg"
+    to_chat: str = Field(alias="to")
+    from_account: str = Field(alias="from")
+    message: str

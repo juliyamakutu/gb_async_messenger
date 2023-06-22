@@ -14,6 +14,7 @@ class ServerSettings(CommonSettings):
     host: str = ""
     port: int = 7777
     max_connections: int = 5
+    socket_timeout: float = 0.2
     log_interval: int = 1
     log_period: str = "D"
 

@@ -60,3 +60,104 @@
 2023-06-15 16:54:08,113 INFO client.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60534), raddr=('127.0.0.1', 7777)>, 'message': PresenceRequest(action='presence', time='1686840848.112659', type='status', user=User(account_name='Guest', status='Yep, I am here!'))} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
 2023-06-15 16:54:08,114 INFO client.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60534), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
 2023-06-15 16:54:08,115 INFO client.py Response code 200 with message 'OK'
+2023-06-19 18:51:32,589 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59590), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:52:47,889 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-19 18:52:47,902 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:52:47,903 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59605), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687193567.902824', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:52:47,904 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59605), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:52:48,103 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-19 18:54:29,052 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59612), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:54:32,177 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-19 18:54:32,189 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:54:32,191 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59614), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687193672.189918', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:54:32,191 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59614), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:54:34,835 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-19 18:54:34,838 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59612), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:54:55,431 WARNING client_read_message.py Invalid message received ({'response': 400, 'alert': 'Invalid message'})
+2023-06-19 18:55:30,586 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-19 18:55:30,599 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:55:30,600 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59638), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687193730.599589', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:55:30,600 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59638), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:55:37,358 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-19 18:56:26,612 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-19 18:56:26,626 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:26,627 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59643), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687193786.627008', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:26,628 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59643), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:34,499 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-19 18:56:50,809 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-19 18:56:50,821 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:50,822 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59645), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687193810.821794', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:50,822 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 59645), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-19 18:56:51,020 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:14:27,460 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60827), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:15:38,140 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60831), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:17:35,517 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60839), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:17:40,569 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:17:40,581 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:17:40,582 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60841), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687216660.581941', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:17:40,584 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60841), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:17:40,807 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:18:42,842 INFO client_read_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60848), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:45,736 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:18:45,748 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:45,750 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60852), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687216725.748961', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:45,751 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60852), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:45,976 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:18:53,506 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:18:53,519 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:53,519 INFO client_send_message.py Вызов функции send_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60857), raddr=('127.0.0.1', 7777)>, 'message': ChatMessageRequest(action='msg', time='1687216733.519178', to_chat='#all', from_account='Guest', message='Hello, world!')} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:53,519 INFO client_send_message.py Вызов функции recv_message c параметрами (), {'conn': <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 60857), raddr=('127.0.0.1', 7777)>} из модуля common.utils. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:18:53,714 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:19:34,886 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:19:34,899 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:19:35,120 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:19:43,603 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:19:43,615 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:19:43,809 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:27:44,973 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:27:44,987 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:28:31,104 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:28:31,119 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:28:31,336 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:31:26,225 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:31:26,239 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:31:26,460 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:32:58,169 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:32:58,183 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:32:58,406 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:33:01,362 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:33:01,374 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:33:01,567 INFO client_send_message.py Response code 400 with message 'Invalid message'
+2023-06-20 01:35:08,537 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:35:08,551 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:35:08,771 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:35:16,787 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:35:16,799 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:35:16,993 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:37:22,244 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:37:22,259 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:37:22,483 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:37:24,470 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:37:24,482 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:37:24,679 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:38:59,850 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:38:59,864 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:39:00,089 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:39:01,910 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:39:01,922 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:39:02,117 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:40:53,590 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:40:53,604 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:40:53,827 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:40:54,912 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:40:54,924 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:40:55,117 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:40:59,247 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:40:59,259 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:40:59,453 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:41:02,757 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:41:02,769 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:41:02,962 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-20 01:41:05,462 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-20 01:41:05,475 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-20 01:41:05,668 INFO client_send_message.py Response code 200 with message 'OK'
