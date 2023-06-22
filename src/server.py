@@ -1,5 +1,4 @@
 import select
-import sys
 from socket import AF_INET, SOCK_STREAM, socket
 
 import typer
@@ -10,6 +9,7 @@ from common import (PresenceRequest, ReceiveError, Response, Request, ChatMessag
                     send_message, log)
 from config import server_config as config
 from log import server_logger as logger
+from queue import Queue
 
 
 @log(logger)
@@ -36,17 +36,20 @@ def parse_message(msg: dict) -> Request | None:
 
 
 @log(logger)
-def parse_messages(messages: dict) -> (dict, dict):
-    parsed_messages = {}
-    responses = {}
+def process_messages(messages: dict, names: dict, queues: dict) -> None:
     for sender, message in messages.items():
         parsed_message = parse_message(message)
         if not parsed_message:
-            responses[sender] = Response(response=400, alert="Invalid message")
+            queues[sender].put(Response(response=400, alert="Invalid message"))
         else:
-            responses[sender] = Response(response=200, alert="OK")
-            parsed_messages[sender] = parse_message(message)
-    return parsed_messages, responses
+            queues[sender].put(Response(response=200, alert="OK"))
+            if parsed_message.action == "presence":
+                names[parsed_message.user.account_name] = sender
+            elif parsed_message.action == "msg":
+                names[parsed_message.from_account] = sender
+                receiver = names.get(parsed_message.to_chat)
+                if receiver:
+                    queues[receiver].put(parsed_message)
 
 
 def read_clients(clients: list, all_clients: list) -> dict:
@@ -66,39 +69,34 @@ def read_clients(clients: list, all_clients: list) -> dict:
     return messages
 
 
-def write_clients(clients: list, all_clients: list, messages: dict) -> None:
+def send_messages(clients: list, all_clients: list, queues: dict, names: dict) -> None:
     for client in clients:
-        for sender, message in messages.items():
-            if sender != client:
-                try:
-                    send_message(conn=client, message=message)
-                except (OSError, ConnectionResetError):
-                    logger.error("Client disconnected")
-                    all_clients.remove(client)
-                    continue
-
-
-def write_response(responses: dict, all_clients: list) -> None:
-    for client, message in responses.items():
-        try:
-            send_message(conn=client, message=message)
-        except (OSError, ConnectionResetError):
-            logger.error("Client disconnected")
-            all_clients.remove(client)
-            continue
-
+        if not queues[client].empty():
+            message = queues[client].get()
+            try:
+                send_message(conn=client, message=message)
+            except (OSError, ConnectionResetError):
+                logger.error("Client disconnected")
+                all_clients.remove(client)
+                del queues[client]
+                for key, values in names.items():
+                    if values == client:
+                        del names[key]
+                continue
 
 def main(
     host: Annotated[str, typer.Option("-a")] = config.host,
     port: Annotated[int, typer.Option("-p")] = config.port,
 ):
     clients = []
-    s = socket(AF_INET, SOCK_STREAM)
-    s.bind((host, port))
-    s.listen(config.max_connections)
-    s.settimeout(config.socket_timeout)
-    logger.info("Server started on %s:%s", host, port)
-    try:
+    names = {}
+    queues = {}
+
+    with socket(AF_INET, SOCK_STREAM) as s:
+        s.bind((host, port))
+        s.listen(config.max_connections)
+        s.settimeout(config.socket_timeout)
+        logger.info("Server started on %s:%s", host, port)
         while True:
             try:
                 conn, addr = s.accept()
@@ -107,11 +105,11 @@ def main(
             else:
                 logger.info(f"Connected by %s", addr)
                 clients.append(conn)
+                queues[conn] = Queue()
             finally:
                 read_list = []
                 write_list = []
                 messages = {}
-                parsed_messages = {}
                 if clients:
                     try:
                         read_list, write_list, _ = select.select(clients, clients, [], 10)
@@ -120,18 +118,9 @@ def main(
                 if read_list:
                     messages = read_clients(clients=read_list, all_clients=clients)
                 if messages:
-                    parsed_messages, responses = parse_messages(messages=messages)
-                    write_response(responses=responses, all_clients=clients)
-                if write_list and parsed_messages:
-                    write_clients(clients=write_list, all_clients=clients, messages=parsed_messages)
-
-    except KeyboardInterrupt:
-        logger.info("Server stopped by user")
-        s.close()
-        sys.exit()
-    finally:
-        logger.info("Server stopped")
-        s.close()
+                    process_messages(messages=messages, names=names, queues=queues)
+                if write_list:
+                    send_messages(clients=write_list, all_clients=clients, queues=queues, names=names)
 
 
 if __name__ == "__main__":
