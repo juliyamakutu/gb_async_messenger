@@ -13,7 +13,7 @@ from log import client_logger as logger
 def create_message(account_name: str, chat: str, message: str) -> ChatMessageRequest:
     data = {
         "time": datetime.now().timestamp(),
-        "to": f"#{chat}",
+        "to": chat,
         "from": account_name,
         "message": message,
     }
@@ -28,7 +28,7 @@ def main(addr: str, port: int = typer.Argument(default=7777)):
             conn=s,
             message=create_message(
                 account_name="Guest",
-                chat="all",
+                chat="Reader",
                 message="Hello, world!",
             ),
         )

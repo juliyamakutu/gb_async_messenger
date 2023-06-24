@@ -161,3 +161,72 @@
 2023-06-20 01:41:05,462 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
 2023-06-20 01:41:05,475 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
 2023-06-20 01:41:05,668 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-22 13:37:04,455 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:37:04,468 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:38:32,369 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:38:32,383 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:39:39,244 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:39:39,258 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:41:01,084 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:41:01,099 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:42:32,482 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:42:32,497 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'all', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:42:32,713 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-22 13:45:33,448 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:33,680 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:33,884 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:34,089 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:34,295 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:34,502 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:34,710 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:34,915 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:35,121 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:35,328 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:35,535 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:35,743 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:35,949 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:36,157 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:36,361 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:36,567 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:36,774 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:36,982 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:37,188 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:37,395 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:37,599 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:37,805 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,009 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,216 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,418 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,602 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:45:38,603 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,615 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'Reader', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:45:38,810 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:38,810 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-22 13:45:39,012 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:39,215 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:39,424 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:39,627 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:39,833 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:40,035 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:40,239 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:40,445 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:40,652 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:40,859 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:41,063 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:41,094 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:45:58,444 INFO client_read_message.py Presence message for user Guest, status Yep, I am here! generated
+2023-06-22 13:46:01,860 INFO client_send_message.py Sending presence request to 127.0.0.1:7777
+2023-06-22 13:46:01,873 INFO client_send_message.py Вызов функции create_message c параметрами (), {'account_name': 'Guest', 'chat': 'Reader', 'message': 'Hello, world!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 13:46:02,066 INFO client_send_message.py Response code 200 with message 'OK'
+2023-06-22 14:35:28,669 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-22 14:35:28,699 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user1', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 14:35:28,700 INFO client.py Presence message for user user1, status Yep, I am here! generated
+2023-06-22 14:35:28,881 INFO client.py Response code 200 with message 'OK'
+2023-06-22 14:35:58,126 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-22 14:35:58,163 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user1', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 14:35:58,163 INFO client.py Presence message for user user1, status Yep, I am here! generated
+2023-06-22 14:35:58,335 INFO client.py Response code 200 with message 'OK'
+2023-06-22 14:36:12,885 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-22 14:36:12,899 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user2', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-22 14:36:12,900 INFO client.py Presence message for user user2, status Yep, I am here! generated
+2023-06-22 14:36:13,088 INFO client.py Response code 200 with message 'OK'
