@@ -1,7 +1,18 @@
 import subprocess
 import typer
+import os
 
 from typing_extensions import Annotated
+
+
+PATH_TO_FILE = os.path.dirname(__file__)
+
+
+def _osascript(script: str) -> subprocess.Popen:
+    return subprocess.Popen(
+        f'osascript -e \'tell application "Terminal" to do'
+        f' script "cd {PATH_TO_FILE} && {script}"\'', shell=True
+    )
 
 
 def main(
@@ -11,9 +22,9 @@ def main(
 ):
     PROCESSES = []
 
-    subprocess.Popen(["python", "src/server.py", "-a", addr, "-p", str(port)], shell=True)
+    PROCESSES.append(_osascript(f"pdm run server.py -a {addr} -p {port}"))
     for i in range(clients_count):
-        client = subprocess.Popen(["python", "src/client.py", addr, str(port)], shell=True)
+        client = _osascript(f"pdm run client.py {addr} {port}")
         PROCESSES.append(client)
 
     input("Press Enter to exit\n")
