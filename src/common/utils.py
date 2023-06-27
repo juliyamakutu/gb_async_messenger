@@ -1,13 +1,17 @@
 import json
 import sys
 from socket import socket
+from subprocess import Popen, PIPE
+
+from tabulate import tabulate
 
 from config import base_config as config
 from log import server_logger, client_logger
-from .decorators import log
 
 from .exceptions import ReceiveError
 from .jim_types import Request, Response
+
+from ipaddress import ip_address
 
 if 'server' in sys.argv[0]:
     logger = server_logger
@@ -29,3 +33,58 @@ def recv_message(conn: socket) -> dict | None:
         return json.loads(msg_bytes.decode(encoding=config.encoding))
     except (json.JSONDecodeError, UnicodeDecodeError):
         raise ReceiveError
+
+
+def _host_ping(host: str, timeout: int = 1):
+    try:
+        ip = ip_address(host)
+    except ValueError:
+        # if it is host name
+        ip = host
+    ping = Popen(["ping", "-c", "1", "-t", "1", str(ip)], shell=False, stdout=PIPE)
+    ping.wait()
+    if ping.returncode == 0:
+        return True
+    else:
+        return False
+
+
+def host_ping(host_list: list[str]):
+    for host in host_list:
+        if _host_ping(host):
+            print(f"Узел {host} доступен")
+        else:
+            print(f"Узел {host} недоступен")
+
+
+def host_range_ping(start_ip: str, ip_count: int):
+    first_bytes = '.'.join(start_ip.split('.')[:-1])
+    last_byte = start_ip.split('.')[-1]
+    max_ip = int(last_byte) + ip_count
+    if max_ip > 254:
+        max_ip = 254
+    for i in range(int(last_byte), max_ip):
+        host = f"{first_bytes}.{i}"
+        if _host_ping(host):
+            print(f"Узел {host} доступен")
+        else:
+            print(f"Узел {host} недоступен")
+
+
+def host_range_ping_tab(start_ip: str, ip_count: int):
+    first_bytes = '.'.join(start_ip.split('.')[:-1])
+    last_byte = start_ip.split('.')[-1]
+    max_ip = int(last_byte) + ip_count
+    if max_ip > 254:
+        max_ip = 254
+    result = {
+        "Available hosts": [],
+        "Unavailable hosts": []
+    }
+    for i in range(int(last_byte), max_ip):
+        host = f"{first_bytes}.{i}"
+        if _host_ping(host):
+            result["Available hosts"].append(str(host))
+        else:
+            result["Unavailable hosts"].append(str(host))
+    print(tabulate(result, headers="keys", tablefmt="pipe", stralign="center"))
