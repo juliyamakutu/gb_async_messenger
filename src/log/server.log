@@ -4,3 +4,25 @@
 2023-06-29 12:49:24,684 INFO server.py Client ('127.0.0.1', 61241) connected
 2023-06-29 12:49:24,921 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10398b5d0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61241)>: {'action': 'presence', 'time': '1688035764.720526', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Yep, I am here!'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
 2023-06-29 12:49:24,921 INFO server.py Presence message received from user user1
+2023-06-29 13:09:00,169 INFO server.py Server started on :7777
+2023-06-29 13:09:05,520 INFO server.py Client ('127.0.0.1', 61376) connected
+2023-06-29 13:09:05,738 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61376)>: {'action': 'presence', 'time': '1688036945.521629', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:09:05,738 INFO server.py Presence message received from user user1
+2023-06-29 13:09:22,112 INFO server.py Client ('127.0.0.1', 61381) connected
+2023-06-29 13:09:22,314 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=7, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61381)>: {'action': 'presence', 'time': '1688036962.112736', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:09:22,314 INFO server.py Presence message received from user user1
+2023-06-29 13:10:10,982 ERROR server.py Client disconnected
+2023-06-29 13:10:27,672 ERROR server.py Client disconnected
+2023-06-29 13:16:51,298 INFO server.py Client ('127.0.0.1', 61402) connected
+2023-06-29 13:16:51,302 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61402)>: {'action': 'presence', 'time': '1688037411.298891', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:16:51,303 INFO server.py Presence message received from user user1
+2023-06-29 13:17:02,761 INFO server.py Client ('127.0.0.1', 61404) connected
+2023-06-29 13:17:02,964 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61404)>: {'action': 'presence', 'time': '1688037422.762232', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:17:02,964 INFO server.py Presence message received from user user1
+2023-06-29 13:17:20,469 INFO server.py Client ('127.0.0.1', 61406) connected
+2023-06-29 13:17:20,671 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61406)>: {'action': 'presence', 'time': '1688037440.470089', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:17:20,671 INFO server.py Presence message received from user user1
+2023-06-29 13:17:39,010 INFO server.py Client ('127.0.0.1', 61408) connected
+2023-06-29 13:17:39,212 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61408)>: {'action': 'presence', 'time': '1688037459.010599', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 13:17:39,212 INFO server.py Presence message received from user user1
+2023-06-29 13:17:51,481 ERROR server.py Client disconnected
