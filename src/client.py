@@ -1,11 +1,18 @@
+import threading
 from datetime import datetime
 from socket import AF_INET, SOCK_STREAM, socket
 
 import typer
-import threading
 
-from common import (PresenceRequest, ReceiveError, recv_message,
-                    send_message, ChatMessageRequest, Port, ClientMeta)
+from common import (
+    ChatMessageRequest,
+    ClientMeta,
+    Port,
+    PresenceRequest,
+    ReceiveError,
+    recv_message,
+    send_message,
+)
 from log import client_logger as logger
 
 
@@ -32,7 +39,6 @@ class JimClient(metaclass=ClientMeta):
         self.socket.close()
 
     def _make_presence_message(self, status: str) -> PresenceRequest:
-
         return PresenceRequest(
             action="presence",
             time=datetime.now().timestamp(),
@@ -64,9 +70,9 @@ class JimClient(metaclass=ClientMeta):
             logger.critical("Connection lost!")
             self.stop()
         else:
-            if msg.get('action') == 'msg':
+            if msg.get("action") == "msg":
                 return f"{msg.get('from')}: {msg.get('message')}"
-            elif msg.get('action') == 'presence':
+            elif msg.get("action") == "presence":
                 return f"{msg.get('user', {}).get('account_name')} connected"
 
     def send_messages(self, message: str, receiver: str):

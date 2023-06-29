@@ -1,15 +1,25 @@
 import select
+from queue import Queue
 from socket import AF_INET, SOCK_STREAM, socket
 
 import typer
 from pydantic import ValidationError
 from typing_extensions import Annotated
 
-from common import (PresenceRequest, ReceiveError, Response, Request, ChatMessageRequest, recv_message,
-                    send_message, log, Port, ServerMeta)
+from common import (
+    ChatMessageRequest,
+    Port,
+    PresenceRequest,
+    ReceiveError,
+    Request,
+    Response,
+    ServerMeta,
+    log,
+    recv_message,
+    send_message,
+)
 from config import server_config as config
 from log import server_logger as logger
-from queue import Queue
 
 
 class JimServer(metaclass=ServerMeta):
@@ -54,7 +64,9 @@ class JimServer(metaclass=ServerMeta):
         messages = {}
         if self.clients:
             try:
-                read_list, write_list, _ = select.select(self.clients, self.clients, [], 10)
+                read_list, write_list, _ = select.select(
+                    self.clients, self.clients, [], 10
+                )
             except OSError:
                 pass
         if read_list:
@@ -73,7 +85,9 @@ class JimServer(metaclass=ServerMeta):
             except ValidationError:
                 logger.warning("Invalid presence message: %s", msg)
                 return None
-            logger.info("Presence message received from user %s", msg["user"]["account_name"])
+            logger.info(
+                "Presence message received from user %s", msg["user"]["account_name"]
+            )
         elif msg_action == "msg":
             try:
                 parsed_message = ChatMessageRequest(**msg)
@@ -134,8 +148,8 @@ class JimServer(metaclass=ServerMeta):
 
 
 def main(
-        host: Annotated[str, typer.Option("-a")] = config.host,
-        port: Annotated[int, typer.Option("-p")] = config.port,
+    host: Annotated[str, typer.Option("-a")] = config.host,
+    port: Annotated[int, typer.Option("-p")] = config.port,
 ):
     server = JimServer(addr=host, port=port)
     while server.running:

@@ -1,19 +1,18 @@
 import json
 import sys
+from ipaddress import ip_address
 from socket import socket
-from subprocess import Popen, PIPE
+from subprocess import PIPE, Popen
 
 from tabulate import tabulate
 
 from config import base_config as config
-from log import server_logger, client_logger
+from log import client_logger, server_logger
 
 from .exceptions import ReceiveError
 from .jim_types import Request, Response
 
-from ipaddress import ip_address
-
-if 'server' in sys.argv[0]:
+if "server" in sys.argv[0]:
     logger = server_logger
 else:
     logger = client_logger
@@ -58,8 +57,8 @@ def host_ping(host_list: list[str]):
 
 
 def host_range_ping(start_ip: str, ip_count: int):
-    first_bytes = '.'.join(start_ip.split('.')[:-1])
-    last_byte = start_ip.split('.')[-1]
+    first_bytes = ".".join(start_ip.split(".")[:-1])
+    last_byte = start_ip.split(".")[-1]
     max_ip = int(last_byte) + ip_count
     if max_ip > 254:
         max_ip = 254
@@ -72,15 +71,12 @@ def host_range_ping(start_ip: str, ip_count: int):
 
 
 def host_range_ping_tab(start_ip: str, ip_count: int):
-    first_bytes = '.'.join(start_ip.split('.')[:-1])
-    last_byte = start_ip.split('.')[-1]
+    first_bytes = ".".join(start_ip.split(".")[:-1])
+    last_byte = start_ip.split(".")[-1]
     max_ip = int(last_byte) + ip_count
     if max_ip > 254:
         max_ip = 254
-    result = {
-        "Available hosts": [],
-        "Unavailable hosts": []
-    }
+    result = {"Available hosts": [], "Unavailable hosts": []}
     for i in range(int(last_byte), max_ip):
         host = f"{first_bytes}.{i}"
         if _host_ping(host):
