@@ -230,3 +230,8 @@
 2023-06-22 14:36:12,899 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user2', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
 2023-06-22 14:36:12,900 INFO client.py Presence message for user user2, status Yep, I am here! generated
 2023-06-22 14:36:13,088 INFO client.py Response code 200 with message 'OK'
+2023-06-29 12:49:24,683 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-29 12:49:24,720 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user1', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-29 12:49:24,720 INFO client.py Presence message for user user1, status Yep, I am here! generated
+2023-06-29 12:49:24,921 INFO client.py Response code 200 with message 'OK'
+2023-06-29 12:49:37,016 CRITICAL client.py Connection lost!

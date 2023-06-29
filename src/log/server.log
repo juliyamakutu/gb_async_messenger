@@ -1,2 +1,6 @@
-2023-06-26 09:43:50,000 INFO server.py Server started on 127.0.0.1:7777
-2023-06-26 09:47:06,947 INFO server.py Server started on 127.0.0.1:7777
+2023-06-29 12:48:27,041 INFO server.py Server started on :7777
+2023-06-29 12:48:27,243 CRITICAL server.py 'socket' object has no attribute 'clients'
+2023-06-29 12:49:12,695 INFO server.py Server started on :7777
+2023-06-29 12:49:24,684 INFO server.py Client ('127.0.0.1', 61241) connected
+2023-06-29 12:49:24,921 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10398b5d0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61241)>: {'action': 'presence', 'time': '1688035764.720526', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Yep, I am here!'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-06-29 12:49:24,921 INFO server.py Presence message received from user user1
