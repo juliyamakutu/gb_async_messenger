@@ -6,13 +6,15 @@ from pydantic import ValidationError
 from typing_extensions import Annotated
 
 from common import (PresenceRequest, ReceiveError, Response, Request, ChatMessageRequest, recv_message,
-                    send_message, log)
+                    send_message, log, Port, ServerMeta)
 from config import server_config as config
 from log import server_logger as logger
 from queue import Queue
 
 
-class JimServer:
+class JimServer(metaclass=ServerMeta):
+    port = Port()
+
     def __init__(self, addr: str, port: int):
         self.addr = addr
         self.port = port

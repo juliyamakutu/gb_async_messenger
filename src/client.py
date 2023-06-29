@@ -2,15 +2,16 @@ from datetime import datetime
 from socket import AF_INET, SOCK_STREAM, socket
 
 import typer
-from pydantic import ValidationError
 import threading
 
-from common import (PresenceRequest, ReceiveError, Response, recv_message,
-                    send_message, log, ChatMessageRequest)
+from common import (PresenceRequest, ReceiveError, recv_message,
+                    send_message, ChatMessageRequest, Port, ClientMeta)
 from log import client_logger as logger
 
 
-class JimClient:
+class JimClient(metaclass=ClientMeta):
+    port = Port()
+
     def __init__(self, addr: str, port: int, account_name: str):
         self.addr = addr
         self.port = port
