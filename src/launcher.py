@@ -1,9 +1,8 @@
-import subprocess
-import typer
 import os
+import subprocess
 
+import typer
 from typing_extensions import Annotated
-
 
 PATH_TO_FILE = os.path.dirname(__file__)
 
@@ -11,14 +10,15 @@ PATH_TO_FILE = os.path.dirname(__file__)
 def _osascript(script: str) -> subprocess.Popen:
     return subprocess.Popen(
         f'osascript -e \'tell application "Terminal" to do'
-        f' script "cd {PATH_TO_FILE} && {script}"\'', shell=True
+        f' script "cd {PATH_TO_FILE} && {script}"\'',
+        shell=True,
     )
 
 
 def main(
-        addr: str,
-        port: int = typer.Argument(default=7777),
-        clients_count: Annotated[int, typer.Option("-c")] = 1,
+    addr: str,
+    port: int = typer.Argument(default=7777),
+    clients_count: Annotated[int, typer.Option("-c")] = 1,
 ):
     PROCESSES = []
 

@@ -230,3 +230,27 @@
 2023-06-22 14:36:12,899 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user2', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
 2023-06-22 14:36:12,900 INFO client.py Presence message for user user2, status Yep, I am here! generated
 2023-06-22 14:36:13,088 INFO client.py Response code 200 with message 'OK'
+2023-06-29 12:49:24,683 INFO client.py Sending presence request to 127.0.0.1:7777
+2023-06-29 12:49:24,720 INFO client.py Вызов функции make_presence_message c параметрами (), {'account_name': 'user1', 'status': 'Yep, I am here!'} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции main.
+2023-06-29 12:49:24,720 INFO client.py Presence message for user user1, status Yep, I am here! generated
+2023-06-29 12:49:24,921 INFO client.py Response code 200 with message 'OK'
+2023-06-29 12:49:37,016 CRITICAL client.py Connection lost!
+2023-06-29 13:09:05,520 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:09:05,522 INFO client.py Presence message sent
+2023-06-29 13:09:10,752 CRITICAL client.py Connection lost!
+2023-06-29 13:09:22,112 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:09:22,113 INFO client.py Presence message sent
+2023-06-29 13:09:27,334 CRITICAL client.py Connection lost!
+2023-06-29 13:16:51,297 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:16:51,299 INFO client.py Presence message sent
+2023-06-29 13:17:02,761 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:17:02,762 INFO client.py Presence message sent
+2023-06-29 13:17:07,977 CRITICAL client.py Connection lost!
+2023-06-29 13:17:20,469 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:17:20,470 INFO client.py Presence message sent
+2023-06-29 13:17:39,010 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 13:17:39,011 INFO client.py Presence message sent
+2023-06-29 14:39:14,458 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 14:39:14,460 INFO client.py Presence message sent
+2023-06-29 15:38:05,778 INFO client.py Connected to 127.0.0.1:7777
+2023-06-29 15:38:05,781 INFO client.py Presence message sent

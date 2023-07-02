@@ -1,6 +1,5 @@
 from common.utils import host_ping, host_range_ping, host_range_ping_tab
 
-
 EXAMPLE_HOSTS = [
     "ya.ru",
     "google.com",
