@@ -6,32 +6,26 @@ import typer
 from pydantic import ValidationError
 from typing_extensions import Annotated
 
-from common import (
-    ChatMessageRequest,
-    Port,
-    PresenceRequest,
-    ReceiveError,
-    Request,
-    Response,
-    ServerMeta,
-    log,
-    recv_message,
-    send_message,
-)
+from common import (ChatMessageRequest, Port, PresenceRequest, ReceiveError,
+                    Request, Response, ServerMeta, log, recv_message,
+                    send_message)
 from config import server_config as config
+from db import ServerStorage
 from log import server_logger as logger
 
 
 class JimServer(metaclass=ServerMeta):
     port = Port()
 
-    def __init__(self, addr: str, port: int):
+    def __init__(self, addr: str, port: int, storage: "ServerStorage"):
         self.addr = addr
         self.port = port
 
         self.clients = []
         self.names = {}
         self.queues = {}
+
+        self.storage = storage
 
         self.server = None
         self.running = True
@@ -109,11 +103,21 @@ class JimServer(metaclass=ServerMeta):
             else:
                 self.queues[sender].put(Response(response=200, alert="OK"))
                 if parsed_message.action == "presence":
-                    self.names[parsed_message.user.account_name] = sender
+                    account_name = parsed_message.user.account_name
+                    ip_address, port = sender.getpeername()
+                    self.names[account_name] = sender
+                    self.storage.client_loging(
+                        login=account_name, ip_address=ip_address, port=port
+                    )
                 elif parsed_message.action == "msg":
-                    self.names[parsed_message.from_account] = sender
-                    if receiver := self.names.get(parsed_message.to_chat):
+                    from_account = parsed_message.from_account
+                    self.names[from_account] = sender
+                    to_chat = parsed_message.to_chat
+                    if receiver := self.names.get(to_chat):
                         self.queues[receiver].put(parsed_message)
+                        self.storage.add_contact(
+                            login=to_chat, contact_login=from_account
+                        )
 
     def read_clients(self, read_list: list) -> dict:
         messages = {}
@@ -151,7 +155,7 @@ def main(
     host: Annotated[str, typer.Option("-a")] = config.host,
     port: Annotated[int, typer.Option("-p")] = config.port,
 ):
-    server = JimServer(addr=host, port=port)
+    server = JimServer(addr=host, port=port, storage=ServerStorage())
     while server.running:
         try:
             server.process_new_connections()

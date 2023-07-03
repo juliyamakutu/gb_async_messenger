@@ -1,47 +1,90 @@
-2023-06-29 12:48:27,041 INFO server.py Server started on :7777
-2023-06-29 12:48:27,243 CRITICAL server.py 'socket' object has no attribute 'clients'
-2023-06-29 12:49:12,695 INFO server.py Server started on :7777
-2023-06-29 12:49:24,684 INFO server.py Client ('127.0.0.1', 61241) connected
-2023-06-29 12:49:24,921 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10398b5d0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61241)>: {'action': 'presence', 'time': '1688035764.720526', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Yep, I am here!'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 12:49:24,921 INFO server.py Presence message received from user user1
-2023-06-29 13:09:00,169 INFO server.py Server started on :7777
-2023-06-29 13:09:05,520 INFO server.py Client ('127.0.0.1', 61376) connected
-2023-06-29 13:09:05,738 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61376)>: {'action': 'presence', 'time': '1688036945.521629', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:09:05,738 INFO server.py Presence message received from user user1
-2023-06-29 13:09:22,112 INFO server.py Client ('127.0.0.1', 61381) connected
-2023-06-29 13:09:22,314 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=7, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61381)>: {'action': 'presence', 'time': '1688036962.112736', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:09:22,314 INFO server.py Presence message received from user user1
-2023-06-29 13:10:10,982 ERROR server.py Client disconnected
-2023-06-29 13:10:27,672 ERROR server.py Client disconnected
-2023-06-29 13:16:51,298 INFO server.py Client ('127.0.0.1', 61402) connected
-2023-06-29 13:16:51,302 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61402)>: {'action': 'presence', 'time': '1688037411.298891', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:16:51,303 INFO server.py Presence message received from user user1
-2023-06-29 13:17:02,761 INFO server.py Client ('127.0.0.1', 61404) connected
-2023-06-29 13:17:02,964 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61404)>: {'action': 'presence', 'time': '1688037422.762232', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:17:02,964 INFO server.py Presence message received from user user1
-2023-06-29 13:17:20,469 INFO server.py Client ('127.0.0.1', 61406) connected
-2023-06-29 13:17:20,671 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61406)>: {'action': 'presence', 'time': '1688037440.470089', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:17:20,671 INFO server.py Presence message received from user user1
-2023-06-29 13:17:39,010 INFO server.py Client ('127.0.0.1', 61408) connected
-2023-06-29 13:17:39,212 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104288b10>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61408)>: {'action': 'presence', 'time': '1688037459.010599', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 13:17:39,212 INFO server.py Presence message received from user user1
-2023-06-29 13:17:51,481 ERROR server.py Client disconnected
-2023-06-29 13:18:08,174 ERROR server.py Client disconnected
-2023-06-29 13:18:33,119 ERROR server.py Client disconnected
-2023-06-29 13:18:40,563 ERROR server.py Client disconnected
-2023-06-29 14:39:07,029 INFO server.py Server stopped by user
-2023-06-29 14:39:09,097 INFO server.py Server started on :7777
-2023-06-29 14:39:14,458 INFO server.py Client ('127.0.0.1', 61843) connected
-2023-06-29 14:39:14,497 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x104f20390>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61843)>: {'action': 'presence', 'time': '1688042354.4602', 'type': 'status', 'user': {'account_name': 'uaer1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 14:39:14,497 INFO server.py Presence message received from user uaer1
-2023-06-29 14:39:20,542 INFO server.py Server stopped by user
-2023-06-29 14:39:26,685 CRITICAL metaclasses.py Wrong port number 65666
-2023-06-29 14:39:35,450 INFO server.py Server started on :7777
-2023-06-29 15:23:21,767 INFO server.py Server started on :7777
-2023-06-29 15:24:57,474 INFO server.py Server started on :7777
-2023-06-29 15:31:32,845 INFO server.py Server started on :7777
-2023-06-29 15:31:34,345 INFO server.py Server stopped by user
-2023-06-29 15:38:01,112 INFO server.py Server started on :7777
-2023-06-29 15:38:05,778 INFO server.py Client ('127.0.0.1', 62172) connected
-2023-06-29 15:38:05,996 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10331a2d0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62172)>: {'action': 'presence', 'time': '1688045885.77958', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
-2023-06-29 15:38:05,996 INFO server.py Presence message received from user user1
+2023-07-03 00:15:34,358 INFO server.py Server stopped by user
+2023-07-03 00:16:06,722 INFO server.py Server started on :7777
+2023-07-03 00:16:13,113 INFO server.py Client ('127.0.0.1', 57800) connected
+2023-07-03 00:16:13,339 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x107470b50>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57800)>: {'action': 'presence', 'time': '1688336173.113986', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:16:13,339 INFO server.py Presence message received from user user1
+2023-07-03 00:16:13,339 CRITICAL server.py 'ServerStorage' object has no attribute 'session'
+2023-07-03 00:19:03,078 INFO server.py Server started on :7777
+2023-07-03 00:19:08,006 INFO server.py Client ('127.0.0.1', 57809) connected
+2023-07-03 00:19:08,232 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x1079c8f10>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57809)>: {'action': 'presence', 'time': '1688336348.00897', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:19:08,232 INFO server.py Presence message received from user user1
+2023-07-03 00:20:53,925 CRITICAL server.py 
+2023-07-03 00:21:25,718 INFO server.py Server started on :7777
+2023-07-03 00:21:30,098 INFO server.py Client ('127.0.0.1', 57832) connected
+2023-07-03 00:21:30,322 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x103060c10>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57832)>: {'action': 'presence', 'time': '1688336490.099377', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:21:30,322 INFO server.py Presence message received from user user1
+2023-07-03 00:21:30,322 CRITICAL server.py 'ServerStorage' object has no attribute 'session'
+2023-07-03 00:22:00,956 INFO server.py Server started on :7777
+2023-07-03 00:22:05,813 INFO server.py Client ('127.0.0.1', 57837) connected
+2023-07-03 00:22:06,040 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x107b40e90>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57837)>: {'action': 'presence', 'time': '1688336525.814525', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:22:06,040 INFO server.py Presence message received from user user1
+2023-07-03 00:22:06,044 CRITICAL server.py (sqlite3.OperationalError) no such table: clients
+[SQL: SELECT clients.id AS clients_id, clients.login AS clients_login 
+FROM clients 
+WHERE clients.login = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('user1', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2023-07-03 00:23:20,356 INFO server.py Server started on :7777
+2023-07-03 00:23:23,773 INFO server.py Client ('127.0.0.1', 57851) connected
+2023-07-03 00:23:23,997 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10238bcd0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57851)>: {'action': 'presence', 'time': '1688336603.773873', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:23:23,998 INFO server.py Presence message received from user user1
+2023-07-03 00:23:34,698 INFO server.py Client ('127.0.0.1', 57859) connected
+2023-07-03 00:23:34,900 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10238bcd0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57859)>: {'action': 'presence', 'time': '1688336614.699253', 'type': 'status', 'user': {'account_name': 'user2', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:23:34,901 INFO server.py Presence message received from user user2
+2023-07-03 00:23:41,137 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x10238bcd0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57859)>: {'action': 'msg', 'time': '1688336621.111335', 'to': 'user1', 'from': 'user2', 'message': 'hi!'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:23:41,137 INFO server.py Message received from user user2
+2023-07-03 00:23:41,137 CRITICAL server.py ServerStorage.add_contact() got an unexpected keyword argument 'contact'
+2023-07-03 00:24:13,399 INFO server.py Server started on :7777
+2023-07-03 00:24:16,571 INFO server.py Client ('127.0.0.1', 57863) connected
+2023-07-03 00:24:16,797 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x107b78b50>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57863)>: {'action': 'presence', 'time': '1688336656.573137', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:24:16,797 INFO server.py Presence message received from user user1
+2023-07-03 00:24:22,217 INFO server.py Client ('127.0.0.1', 57866) connected
+2023-07-03 00:24:22,418 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x107b78b50>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57866)>: {'action': 'presence', 'time': '1688336662.217775', 'type': 'status', 'user': {'account_name': 'user2', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:24:22,418 INFO server.py Presence message received from user user2
+2023-07-03 00:24:27,446 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x107b78b50>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57866)>: {'action': 'msg', 'time': '1688336667.291882', 'to': 'user1', 'from': 'user2', 'message': 'hi'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:24:27,447 INFO server.py Message received from user user2
+2023-07-03 00:24:27,447 CRITICAL server.py (sqlite3.ProgrammingError) Error binding parameter 1: type 'socket' is not supported
+[SQL: SELECT clients.id AS clients_id, clients.login AS clients_login 
+FROM clients 
+WHERE clients.login = ?
+ LIMIT ? OFFSET ?]
+[parameters: (<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57863)>, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2023-07-03 00:28:21,762 INFO server.py Server started on :7777
+2023-07-03 00:28:24,709 INFO server.py Client ('127.0.0.1', 57886) connected
+2023-07-03 00:28:24,934 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x1032fc9d0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57886)>: {'action': 'presence', 'time': '1688336904.711293', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:28:24,934 INFO server.py Presence message received from user user1
+2023-07-03 00:28:29,013 INFO server.py Client ('127.0.0.1', 57888) connected
+2023-07-03 00:28:29,015 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x1032fc9d0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57888)>: {'action': 'presence', 'time': '1688336909.013745', 'type': 'status', 'user': {'account_name': 'user2', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:28:29,015 INFO server.py Presence message received from user user2
+2023-07-03 00:28:32,434 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x1032fc9d0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57888)>: {'action': 'msg', 'time': '1688336912.335174', 'to': 'user1', 'from': 'user2', 'message': 'hi'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:28:32,434 INFO server.py Message received from user user2
+2023-07-03 00:29:37,261 CRITICAL server.py (sqlite3.ProgrammingError) Error binding parameter 1: type 'socket' is not supported
+[SQL: SELECT clients.id AS clients_id, clients.login AS clients_login 
+FROM clients 
+WHERE clients.login = ?
+ LIMIT ? OFFSET ?]
+[parameters: (<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57886)>, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2023-07-03 00:30:09,820 INFO server.py Server started on :7777
+2023-07-03 00:30:13,594 INFO server.py Client ('127.0.0.1', 57898) connected
+2023-07-03 00:30:13,821 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x103750b90>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57898)>: {'action': 'presence', 'time': '1688337013.595786', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:30:13,821 INFO server.py Presence message received from user user1
+2023-07-03 00:30:18,255 INFO server.py Client ('127.0.0.1', 57900) connected
+2023-07-03 00:30:18,457 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x103750b90>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57900)>: {'action': 'presence', 'time': '1688337018.256139', 'type': 'status', 'user': {'account_name': 'user2', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:30:18,458 INFO server.py Presence message received from user user2
+2023-07-03 00:30:21,878 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x103750b90>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57900)>: {'action': 'msg', 'time': '1688337021.787065', 'to': 'user1', 'from': 'user2', 'message': 'hi'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:30:21,878 INFO server.py Message received from user user2
+2023-07-03 00:30:21,879 CRITICAL server.py 'NoneType' object has no attribute 'id'
+2023-07-03 00:32:05,064 INFO server.py Server started on :7777
+2023-07-03 00:32:08,019 INFO server.py Client ('127.0.0.1', 57907) connected
+2023-07-03 00:32:08,245 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x105da3cd0>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57907)>: {'action': 'presence', 'time': '1688337128.021348', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:32:08,245 INFO server.py Presence message received from user user1
+2023-07-03 00:32:11,809 INFO server.py Client ('127.0.0.1', 57910) connected
+2023-07-03 00:32:12,011 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x105da3cd0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57910)>: {'action': 'presence', 'time': '1688337131.810145', 'type': 'status', 'user': {'account_name': 'user2', 'status': 'Online'}}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:32:12,012 INFO server.py Presence message received from user user2
+2023-07-03 00:32:15,837 INFO server.py Вызов функции process_messages c параметрами (<__main__.JimServer object at 0x105da3cd0>,), {'messages': {<socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57910)>: {'action': 'msg', 'time': '1688337135.776781', 'to': 'user1', 'from': 'user2', 'message': 'hi'}}} из модуля __main__. Вызов из функции typer.run(main). Вызов из функции check_socket.
+2023-07-03 00:32:15,837 INFO server.py Message received from user user2
+2023-07-03 00:32:16,041 ERROR server.py Client disconnected
+2023-07-03 00:32:31,907 INFO server.py Server stopped by user
