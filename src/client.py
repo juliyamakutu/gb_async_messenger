@@ -6,16 +6,21 @@ import typer
 
 from common import (ChatMessageRequest, ClientMeta, GetContactsRequest, Port,
                     PresenceRequest, ReceiveError, recv_message, send_message)
+from db import ClientDatabase
 from log import client_logger as logger
 
 
 class JimClient(metaclass=ClientMeta):
     port = Port()
 
-    def __init__(self, addr: str, port: int, account_name: str):
+    def __init__(
+        self, addr: str, port: int, account_name: str, storage: "ClientDatabase"
+    ):
         self.addr = addr
         self.port = port
         self.account_name = account_name
+
+        self.storage = storage
 
         self.socket = None
         self.running = True
@@ -63,6 +68,7 @@ class JimClient(metaclass=ClientMeta):
             if msg.get("response") == 202:
                 logger.info(f"Got contact list: {msg.get('alert')}")
                 break
+        self.storage.update_contact_list(contact_list=msg.get("alert"))
 
     def make_text_message(self, to_chat: str, message: str) -> ChatMessageRequest:
         data = {
@@ -85,6 +91,9 @@ class JimClient(metaclass=ClientMeta):
             self.stop()
         else:
             if msg.get("action") == "msg":
+                self.storage.save_message(
+                    contact=msg.get("from"), message=msg.get("message")
+                )
                 return f"{msg.get('from')}: {msg.get('message')}"
             elif msg.get("action") == "presence":
                 return f"{msg.get('user', {}).get('account_name')} connected"
@@ -101,6 +110,8 @@ class JimClient(metaclass=ClientMeta):
         except (OSError, ConnectionError, ConnectionAbortedError, ConnectionResetError):
             logger.critical("Connection lost!")
             self.stop()
+        else:
+            self.storage.save_message(contact=receiver, message=message)
 
 
 def get_messages(client: JimClient):
@@ -118,7 +129,9 @@ def user_interface(client: JimClient):
 
 def main(addr: str, port: int = typer.Argument(default=7777)):
     account_name = input("Enter your name: ")
-    client = JimClient(addr=addr, port=port, account_name=account_name)
+    client = JimClient(
+        addr=addr, port=port, account_name=account_name, storage=ClientDatabase()
+    )
 
     getter = threading.Thread(target=get_messages, args=(client,))
     getter.daemon = True

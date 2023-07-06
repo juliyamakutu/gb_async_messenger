@@ -25,6 +25,7 @@ class ServerSettings(CommonSettings):
 class ClientSettings(CommonSettings):
     host: str = "localhost"
     port: int = 7777
+    database_path: str = "sqlite:///client.db"
 
 
 base_config = CommonSettings()
