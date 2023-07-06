@@ -6,7 +6,8 @@ import typer
 from pydantic import ValidationError
 from typing_extensions import Annotated
 
-from common import (ChatMessageRequest, Port, PresenceRequest, ReceiveError,
+from common import (AddContactRequest, ChatMessageRequest, DelContactRequest,
+                    GetContactsRequest, Port, PresenceRequest, ReceiveError,
                     Request, Response, ServerMeta, log, recv_message,
                     send_message)
 from config import server_config as config
@@ -39,6 +40,8 @@ class JimServer(metaclass=ServerMeta):
         logger.info("Server started on %s:%s", self.addr, self.port)
 
     def stop(self):
+        for client in self.clients:
+            client.close()
         self.running = False
         self.server.close()
 
@@ -89,6 +92,27 @@ class JimServer(metaclass=ServerMeta):
                 logger.warning("Invalid message: %s", msg)
                 return None
             logger.info("Message received from user %s", msg["from"])
+        elif msg_action == "get_contacts":
+            try:
+                parsed_message = GetContactsRequest(**msg)
+            except ValidationError:
+                logger.warning("Invalid message: %s", msg)
+                return None
+            logger.info("Get contacts message received from user %s", msg["user_login"])
+        elif msg_action == "add_contact":
+            try:
+                parsed_message = AddContactRequest(**msg)
+            except ValidationError:
+                logger.warning("Invalid message: %s", msg)
+                return None
+            logger.info("Add contact message received from user %s", msg["user_login"])
+        elif msg_action == "del_contact":
+            try:
+                parsed_message = DelContactRequest(**msg)
+            except ValidationError:
+                logger.warning("Invalid message: %s", msg)
+                return None
+            logger.info("Del contact message received from user %s", msg["user_login"])
         else:
             logger.warning("Unknown message type: %s", msg_action)
             return None
@@ -101,7 +125,6 @@ class JimServer(metaclass=ServerMeta):
             if not parsed_message:
                 self.queues[sender].put(Response(response=400, alert="Invalid message"))
             else:
-                self.queues[sender].put(Response(response=200, alert="OK"))
                 if parsed_message.action == "presence":
                     account_name = parsed_message.user.account_name
                     ip_address, port = sender.getpeername()
@@ -109,6 +132,7 @@ class JimServer(metaclass=ServerMeta):
                     self.storage.client_loging(
                         login=account_name, ip_address=ip_address, port=port
                     )
+                    self.queues[sender].put(Response(response=200, alert="OK"))
                 elif parsed_message.action == "msg":
                     from_account = parsed_message.from_account
                     self.names[from_account] = sender
@@ -118,6 +142,40 @@ class JimServer(metaclass=ServerMeta):
                         self.storage.add_contact(
                             login=to_chat, contact_login=from_account
                         )
+                    self.queues[sender].put(Response(response=200, alert="OK"))
+                elif parsed_message.action == "get_contacts":
+                    user_login = parsed_message.user_login
+                    self.names[user_login] = sender
+                    self.queues[sender].put(
+                        Response(
+                            response=202,
+                            alert=self.storage.get_contact_list(login=user_login),
+                        )
+                    )
+                elif parsed_message.action == "add_contact":
+                    user_login = parsed_message.user_login
+                    contact_login = parsed_message.contact_login
+                    self.names[user_login] = sender
+                    self.storage.add_contact(
+                        login=user_login, contact_login=contact_login
+                    )
+                    self.queues[sender].put(
+                        Response(
+                            response=200,
+                        )
+                    )
+                elif parsed_message.action == "del_contact":
+                    user_login = parsed_message.user_login
+                    contact_login = parsed_message.contact_login
+                    self.names[user_login] = sender
+                    self.storage.del_contact(
+                        login=user_login, contact_login=contact_login
+                    )
+                    self.queues[sender].put(
+                        Response(
+                            response=200,
+                        )
+                    )
 
     def read_clients(self, read_list: list) -> dict:
         messages = {}
@@ -168,6 +226,7 @@ def main(
             logger.info("Server stopped by user")
             server.stop()
             break
+    server.stop()
 
 
 if __name__ == "__main__":

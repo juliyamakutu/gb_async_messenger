@@ -4,15 +4,8 @@ from socket import AF_INET, SOCK_STREAM, socket
 
 import typer
 
-from common import (
-    ChatMessageRequest,
-    ClientMeta,
-    Port,
-    PresenceRequest,
-    ReceiveError,
-    recv_message,
-    send_message,
-)
+from common import (ChatMessageRequest, ClientMeta, GetContactsRequest, Port,
+                    PresenceRequest, ReceiveError, recv_message, send_message)
 from log import client_logger as logger
 
 
@@ -33,6 +26,7 @@ class JimClient(metaclass=ClientMeta):
         self.socket.connect((self.addr, self.port))
         logger.info(f"Connected to {self.addr}:{self.port}")
         self._send_presence_message(status=f"Online")
+        self._get_contacts()
 
     def stop(self):
         self.running = False
@@ -46,10 +40,29 @@ class JimClient(metaclass=ClientMeta):
             user=PresenceRequest.User(account_name=self.account_name, status=status),
         )
 
+    def _make_get_contacts_message(self) -> GetContactsRequest:
+        return GetContactsRequest(
+            action="get_contacts",
+            time=datetime.now().timestamp(),
+            user_login=self.account_name,
+        )
+
     def _send_presence_message(self, status: str) -> None:
         presence_message = self._make_presence_message(status=status)
         send_message(conn=self.socket, message=presence_message)
         logger.info("Presence message sent")
+        msg = recv_message(conn=self.socket)
+        logger.info(f"Response: {msg}")
+
+    def _get_contacts(self) -> None:
+        get_contacts_message = self._make_get_contacts_message()
+        send_message(conn=self.socket, message=get_contacts_message)
+        logger.info("Contacts message sent")
+        while True:
+            msg = recv_message(conn=self.socket)
+            if msg.get("response") == 202:
+                logger.info(f"Got contact list: {msg.get('alert')}")
+                break
 
     def make_text_message(self, to_chat: str, message: str) -> ChatMessageRequest:
         data = {
@@ -63,6 +76,7 @@ class JimClient(metaclass=ClientMeta):
     def get_messages(self):
         try:
             msg = recv_message(conn=self.socket)
+            logger.info(f"Message received: {msg}")
         except ReceiveError:
             logger.warning("Invalid message received (%s)", msg)
             return
@@ -96,9 +110,10 @@ def get_messages(client: JimClient):
 
 
 def user_interface(client: JimClient):
-    message = input("Enter message: ")
-    receiver = input("Enter receiver: ")
-    client.send_messages(message=message, receiver=receiver)
+    while client.running:
+        message = input("Enter message: ")
+        receiver = input("Enter receiver: ")
+        client.send_messages(message=message, receiver=receiver)
 
 
 def main(addr: str, port: int = typer.Argument(default=7777)):

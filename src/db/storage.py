@@ -68,3 +68,31 @@ class ServerStorage:
             contact_record = ContactList(client_id=client.id, contact_id=contact.id)
             self.session.add(contact_record)
             self.session.commit()
+
+    def del_contact(self, *, login: str, contact_login: str) -> None:
+        client = self.session.query(Client).filter_by(login=login).first()
+        contact = self.session.query(Client).filter_by(login=contact_login).first()
+        if not client or not contact:
+            return
+        contact_record = (
+            self.session.query(ContactList)
+            .filter_by(client_id=client.id, contact_id=contact.id)
+            .first()
+        )
+        if contact_record:
+            self.session.delete(contact_record)
+            self.session.commit()
+
+    def get_contact_list(self, *, login: str) -> list:
+        client = self.session.query(Client).filter_by(login=login).first()
+        if not client:
+            return []
+        contacts = self.session.query(ContactList).filter_by(client_id=client.id).all()
+
+        contact_list = map(
+            lambda contact: self.session.query(Client)
+            .filter_by(id=contact.contact_id)
+            .first(),
+            contacts,
+        )
+        return [contact.login for contact in contact_list]
