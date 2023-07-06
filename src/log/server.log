@@ -133,3 +133,31 @@ alert
 2023-07-06 16:07:22,214 INFO server.py Get contacts message received from user user1
 2023-07-06 16:08:12,505 ERROR server.py Client disconnected
 2023-07-06 16:08:23,972 ERROR server.py Client disconnected
+2023-07-06 18:01:18,955 INFO server.py Server started on :7777
+2023-07-06 18:01:48,630 INFO server.py Server started on :7777
+2023-07-06 18:02:18,512 INFO server.py Client ('127.0.0.1', 62323) connected
+2023-07-06 18:02:23,115 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6144716800)>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62323)>: {'action': 'presence', 'time': '1688659338.500269', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 18:02:23,122 INFO server.py Presence message received from user user1
+2023-07-06 18:02:23,397 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6144716800)>,), {'messages': {<socket.socket fd=6, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62323)>: {'action': 'get_contacts', 'time': '1688659343.159425', 'user_login': 'user1'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 18:02:23,403 INFO server.py Get contacts message received from user user1
+2023-07-06 18:47:02,063 INFO server.py Server started on :7777
+2023-07-06 18:47:10,343 INFO server.py Client ('127.0.0.1', 62602) connected
+2023-07-06 18:47:10,588 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6142373888)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62602)>: {'action': 'presence', 'time': '1688662030.344531', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 18:47:10,588 INFO server.py Presence message received from user user1
+2023-07-06 18:47:10,799 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6142373888)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62602)>: {'action': 'get_contacts', 'time': '1688662030.596241', 'user_login': 'user1'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 18:47:10,800 INFO server.py Get contacts message received from user user1
+2023-07-06 18:47:26,489 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6142373888)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62602)>: {'action': 'msg', 'time': '1688662046.428534', 'to': 'user2', 'from': 'user1', 'message': 'hi'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 18:47:26,490 INFO server.py Message received from user user1
+2023-07-06 19:05:22,788 INFO server.py Server started on :7777
+2023-07-06 19:06:37,368 INFO server.py Server started on :7777
+2023-07-06 19:07:38,993 INFO server.py Server started on :7777
+2023-07-06 19:08:48,768 INFO server.py Server started on :7777
+2023-07-06 19:09:04,579 INFO server.py Server started on :7777
+2023-07-06 19:09:12,750 INFO server.py Client ('127.0.0.1', 62748) connected
+2023-07-06 19:09:12,999 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6116782080)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62748)>: {'action': 'presence', 'time': '1688663352.750314', 'type': 'status', 'user': {'account_name': 'user1', 'status': 'Online'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 19:09:12,999 INFO server.py Presence message received from user user1
+2023-07-06 19:09:13,213 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6116782080)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62748)>: {'action': 'get_contacts', 'time': '1688663353.010251', 'user_login': 'user1'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-06 19:09:13,214 INFO server.py Get contacts message received from user user1
+2023-07-06 19:36:49,203 INFO server.py Server started on :7777
+2023-07-06 19:37:21,437 INFO server.py Server started on :7777
+2023-07-06 19:38:21,144 INFO server.py Server started on :7777

@@ -17,7 +17,6 @@ class ServerSettings(CommonSettings):
     socket_timeout: float = 0.2
     log_interval: int = 1
     log_period: str = "D"
-    database_path: str = "sqlite:///server.db"
     database_log: bool = False
     database_recycle: int = 7200
 
