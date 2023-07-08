@@ -282,3 +282,113 @@
 2023-07-03 00:32:08,023 INFO client.py Presence message sent
 2023-07-03 00:32:11,809 INFO client.py Connected to 127.0.0.1:7777
 2023-07-03 00:32:11,810 INFO client.py Presence message sent
+2023-07-06 14:15:09,400 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:15:09,403 INFO client.py Presence message sent
+2023-07-06 14:15:09,673 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:15:09,673 INFO client.py Get contacts message sent
+2023-07-06 14:15:09,983 INFO client.py Response: None
+2023-07-06 14:16:19,062 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:16:19,064 INFO client.py Presence message sent
+2023-07-06 14:16:19,328 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:16:19,328 INFO client.py Get contacts message sent
+2023-07-06 14:16:19,539 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:19:13,863 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:19:13,865 INFO client.py Presence message sent
+2023-07-06 14:19:14,131 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:19:14,131 INFO client.py Get contacts message sent
+2023-07-06 14:19:14,346 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:21:10,176 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:21:10,179 INFO client.py Presence message sent
+2023-07-06 14:21:10,441 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:21:10,441 INFO client.py Get contacts message sent
+2023-07-06 14:23:33,415 INFO client.py Response: None
+2023-07-06 14:24:10,291 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:24:10,294 INFO client.py Presence message sent
+2023-07-06 14:24:10,558 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:24:10,559 INFO client.py Get contacts message sent
+2023-07-06 14:24:28,778 INFO client.py Response: None
+2023-07-06 14:25:09,808 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:25:09,810 INFO client.py Presence message sent
+2023-07-06 14:25:15,884 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:25:15,884 INFO client.py Get contacts message sent
+2023-07-06 14:25:41,167 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:26:45,429 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:26:45,432 INFO client.py Presence message sent
+2023-07-06 14:26:59,619 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:26:59,620 INFO client.py Get contacts message sent
+2023-07-06 14:27:08,454 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:28:11,776 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:28:11,778 INFO client.py Presence message sent
+2023-07-06 14:28:43,220 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:28:43,221 INFO client.py Get contacts message sent
+2023-07-06 14:28:54,617 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:30:52,411 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:30:52,415 INFO client.py Presence message sent
+2023-07-06 14:31:01,884 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:31:01,885 INFO client.py Contacts message sent
+2023-07-06 14:31:05,283 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:31:42,404 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:31:42,406 INFO client.py Presence message sent
+2023-07-06 14:31:42,669 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:31:42,670 INFO client.py Contacts message sent
+2023-07-06 14:31:42,876 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:32:03,568 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:32:03,569 INFO client.py Presence message sent
+2023-07-06 14:32:03,577 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:32:03,578 INFO client.py Contacts message sent
+2023-07-06 14:32:03,786 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:33:14,645 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:33:14,649 INFO client.py Presence message sent
+2023-07-06 14:33:14,911 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:33:14,911 INFO client.py Contacts message sent
+2023-07-06 14:33:15,124 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:34:05,781 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:34:05,782 INFO client.py Presence message sent
+2023-07-06 14:34:05,790 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:34:05,790 INFO client.py Contacts message sent
+2023-07-06 14:34:05,997 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:34:06,204 INFO client.py Message received: {'response': 202, 'alert': ['user2', 'user1']}
+2023-07-06 14:35:21,660 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 14:35:21,661 INFO client.py Presence message sent
+2023-07-06 14:35:21,667 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 14:35:21,667 INFO client.py Contacts message sent
+2023-07-06 14:35:22,079 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 15:56:16,825 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 15:56:16,826 INFO client.py Presence message sent
+2023-07-06 15:56:16,839 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 15:56:16,840 INFO client.py Contacts message sent
+2023-07-06 15:56:17,249 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 16:00:34,374 INFO client.py Message received: {'response': 200, 'alert': 'OK'}
+2023-07-06 16:03:08,364 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 16:03:08,365 INFO client.py Presence message sent
+2023-07-06 16:03:08,378 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 16:03:08,378 INFO client.py Contacts message sent
+2023-07-06 16:03:08,791 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 16:03:22,875 INFO client.py Message received: {'response': 200, 'alert': 'OK'}
+2023-07-06 16:05:18,027 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 16:05:18,028 INFO client.py Presence message sent
+2023-07-06 16:05:18,041 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 16:05:18,041 INFO client.py Contacts message sent
+2023-07-06 16:05:18,451 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 16:07:21,994 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 16:07:21,996 INFO client.py Presence message sent
+2023-07-06 16:07:22,008 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 16:07:22,008 INFO client.py Contacts message sent
+2023-07-06 16:07:22,421 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 18:02:18,499 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 18:02:18,501 INFO client.py Presence message sent
+2023-07-06 18:02:23,159 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 18:02:23,159 INFO client.py Contacts message sent
+2023-07-06 18:02:23,412 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 18:47:10,343 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 18:47:10,345 INFO client.py Presence message sent
+2023-07-06 18:47:10,596 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 18:47:10,596 INFO client.py Contacts message sent
+2023-07-06 18:47:10,809 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-06 18:47:26,496 INFO client.py Message received: {'response': 200, 'alert': 'OK'}
+2023-07-06 18:47:44,198 INFO client.py Message received: None
+2023-07-06 19:09:12,749 INFO client.py Connected to 127.0.0.1:7777
+2023-07-06 19:09:12,751 INFO client.py Presence message sent
+2023-07-06 19:09:13,010 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-06 19:09:13,010 INFO client.py Contacts message sent
+2023-07-06 19:09:13,223 INFO client.py Got contact list: ['user2', 'user1']

@@ -8,7 +8,7 @@ class Request(BaseModel):
 
 class Response(BaseModel):
     response: int
-    alert: str
+    alert: str | list | None = None
 
 
 class PresenceRequest(Request):
@@ -26,3 +26,20 @@ class ChatMessageRequest(Request):
     to_chat: str = Field(alias="to")
     from_account: str = Field(alias="from")
     message: str
+
+
+class GetContactsRequest(Request):
+    action = "get_contacts"
+    user_login: str
+
+
+class AddContactRequest(Request):
+    action = "add_contact"
+    user_id: str
+    user_login: str
+
+
+class DelContactRequest(Request):
+    action = "del_contact"
+    user_id: str
+    user_login: str
