@@ -18,9 +18,9 @@ class ClientDatabase:
         def __init__(self, contact: str):
             self.contact = contact
 
-    def __init__(self):
+    def __init__(self, db_file_postfix: str):
         self.database_engine = create_engine(
-            config.database_path, echo=False, pool_recycle=7200
+            f"sqlite:///client_{db_file_postfix}.db", echo=False, pool_recycle=7200
         )
         self.metadata = MetaData()
 

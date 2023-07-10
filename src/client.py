@@ -1,3 +1,4 @@
+import re
 import threading
 from datetime import datetime
 from socket import AF_INET, SOCK_STREAM, socket
@@ -10,12 +11,13 @@ from db import ClientDatabase
 from log import client_logger as logger
 
 
-class JimClient(metaclass=ClientMeta):
+class JimClient(threading.Thread, metaclass=ClientMeta):
     port = Port()
 
     def __init__(
         self, addr: str, port: int, account_name: str, storage: "ClientDatabase"
     ):
+        super().__init__()
         self.addr = addr
         self.port = port
         self.account_name = account_name
@@ -25,6 +27,11 @@ class JimClient(metaclass=ClientMeta):
         self.socket = None
         self.running = True
         self._create_socket()
+
+    def run(self) -> None:
+        while self.running:
+            if message := self.get_messages():
+                print(message)
 
     def _create_socket(self) -> None:
         self.socket = socket(AF_INET, SOCK_STREAM)
@@ -114,12 +121,6 @@ class JimClient(metaclass=ClientMeta):
             self.storage.save_message(contact=receiver, message=message)
 
 
-def get_messages(client: JimClient):
-    while client.running:
-        if message := client.get_messages():
-            print(message)
-
-
 def user_interface(client: JimClient):
     while client.running:
         message = input("Enter message: ")
@@ -129,20 +130,22 @@ def user_interface(client: JimClient):
 
 def main(addr: str, port: int = typer.Argument(default=7777)):
     account_name = input("Enter your name: ")
+    db_file_postfix = re.compile(r"[^a-zA-Z0-9_]+").sub("", account_name).lower()
     client = JimClient(
-        addr=addr, port=port, account_name=account_name, storage=ClientDatabase()
+        addr=addr,
+        port=port,
+        account_name=account_name,
+        storage=ClientDatabase(db_file_postfix=db_file_postfix),
     )
-
-    getter = threading.Thread(target=get_messages, args=(client,))
-    getter.daemon = True
-    getter.start()
+    client.daemon = True
+    client.start()
 
     sender = threading.Thread(target=user_interface, args=(client,))
     sender.daemon = True
     sender.start()
 
     while True:
-        if getter.is_alive() and sender.is_alive():
+        if sender.is_alive():
             continue
         else:
             break
