@@ -43,3 +43,8 @@ class DelContactRequest(Request):
     action = "del_contact"
     user_id: str
     user_login: str
+
+
+class GetUsersRequest(Request):
+    action = "get_users"
+    user_login: str
