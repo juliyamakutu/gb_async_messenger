@@ -21,7 +21,7 @@ from log import client_logger as logger
 socket_lock = threading.Lock()
 
 
-class JimClient(threading.Thread, QObject, metaclass=ClientMeta):
+class JimClient(threading.Thread, QObject):
     port = Port()
 
     new_message = pyqtSignal(str)
