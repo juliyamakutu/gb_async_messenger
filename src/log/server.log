@@ -31,3 +31,58 @@
 2023-07-13 14:57:28,058 INFO server.py Presence message received from user user1
 2023-07-13 14:57:28,268 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6178582528)>,), {'messages': {<socket.socket fd=13, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64207)>: {'action': 'get_contacts', 'time': '1689253048.064915', 'user_login': 'user1'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
 2023-07-13 14:57:28,268 INFO server.py Get contacts message received from user user1
+2023-07-13 14:59:57,080 ERROR server.py Client disconnected
+2023-07-13 15:36:24,574 INFO server.py Client ('127.0.0.1', 64571) connected
+2023-07-13 15:36:24,782 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6178582528)>,), {'messages': {<socket.socket fd=14, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64571)>: {'action': 'presence', 'time': '1689255384.577612', 'type': 'status', 'user': {'account_name': '123', 'status': 'Online'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:36:24,782 INFO server.py Presence message received from user 123
+2023-07-13 15:36:25,000 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6178582528)>,), {'messages': {<socket.socket fd=14, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64571)>: {'action': 'get_contacts', 'time': '1689255384.797363', 'user_login': '123'}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:36:25,000 INFO server.py Get contacts message received from user 123
+2023-07-13 15:37:28,168 ERROR server.py Client disconnected
+2023-07-13 15:40:44,396 INFO server.py Client ('127.0.0.1', 64597) connected
+2023-07-13 15:41:05,602 INFO server.py Client ('127.0.0.1', 64604) connected
+2023-07-13 15:41:05,808 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6178582528)>,), {'messages': {<socket.socket fd=16, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64604)>: {'action': 'authenticate', 'time': '1689255665.602927', 'user': {'account_name': '123', 'password': '321'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:41:05,808 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:41:39,610 INFO server.py Client ('127.0.0.1', 64609) connected
+2023-07-13 15:41:39,611 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6178582528)>,), {'messages': {<socket.socket fd=17, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64609)>: {'action': 'authenticate', 'time': '1689255699.609865', 'user': {'account_name': '123', 'password': '321'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:41:39,611 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:51:19,081 INFO server.py Server started on :7777
+2023-07-13 15:51:27,277 INFO server.py Client ('127.0.0.1', 64680) connected
+2023-07-13 15:51:27,303 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64680)>: {'action': 'authenticate', 'time': '1689256287.277532', 'user': {'account_name': '123', 'password': '312'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:51:27,303 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:51:53,269 INFO server.py Client ('127.0.0.1', 64683) connected
+2023-07-13 15:51:53,271 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=12, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64683)>: {'action': 'authenticate', 'time': '1689256313.268978', 'user': {'account_name': '123', 'password': '321'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:51:53,271 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:52:27,468 ERROR server.py Client disconnected
+2023-07-13 15:52:39,819 INFO server.py Client ('127.0.0.1', 64688) connected
+2023-07-13 15:52:40,022 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=13, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64688)>: {'action': 'authenticate', 'time': '1689256359.819778', 'user': {'account_name': '3423', 'password': '2423'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:52:40,022 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:52:53,499 ERROR server.py Client disconnected
+2023-07-13 15:53:15,702 INFO server.py Client ('127.0.0.1', 64691) connected
+2023-07-13 15:53:15,704 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=14, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64691)>: {'action': 'authenticate', 'time': '1689256395.70227', 'user': {'account_name': '24', 'password': '245'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:53:15,704 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:53:54,524 ERROR server.py Client disconnected
+2023-07-13 15:54:00,822 INFO server.py Client ('127.0.0.1', 64703) connected
+2023-07-13 15:54:00,825 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=15, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64703)>: {'action': 'authenticate', 'time': '1689256440.822245', 'user': {'account_name': '1234', 'password': '12345'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:54:00,825 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:54:22,344 ERROR server.py Client disconnected
+2023-07-13 15:54:38,306 INFO server.py Client ('127.0.0.1', 64710) connected
+2023-07-13 15:54:38,308 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6177402880)>,), {'messages': {<socket.socket fd=16, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64710)>: {'action': 'authenticate', 'time': '1689256478.306166', 'user': {'account_name': '1234', 'password': '245'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 15:54:38,308 WARNING server.py Unknown message type: authenticate
+2023-07-13 15:55:02,447 ERROR server.py Client disconnected
+2023-07-13 15:55:42,484 ERROR server.py Client disconnected
+2023-07-13 16:31:12,988 INFO server.py Server started on :7777
+2023-07-13 16:31:24,541 INFO server.py Client ('127.0.0.1', 65034) connected
+2023-07-13 16:31:24,785 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6186381312)>,), {'messages': {<socket.socket fd=11, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 65034)>: {'action': 'authenticate', 'time': '1689258684.541341', 'user': {'account_name': 'user1', 'password': 'pass1'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 16:31:24,785 INFO server.py Authenticate message received from user user1
+2023-07-13 16:31:39,387 INFO server.py Client ('127.0.0.1', 65036) connected
+2023-07-13 16:31:39,591 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6186381312)>,), {'messages': {<socket.socket fd=13, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 65036)>: {'action': 'authenticate', 'time': '1689258699.38788', 'user': {'account_name': 'user1', 'password': ''}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 16:31:39,592 INFO server.py Authenticate message received from user user1
+2023-07-13 16:31:48,389 INFO server.py Client ('127.0.0.1', 65038) connected
+2023-07-13 16:31:48,593 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6186381312)>,), {'messages': {<socket.socket fd=14, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 65038)>: {'action': 'authenticate', 'time': '1689258708.389614', 'user': {'account_name': 'user1', 'password': 'pass1'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 16:31:48,593 INFO server.py Authenticate message received from user user1
+2023-07-13 16:31:55,003 INFO server.py Client ('127.0.0.1', 65040) connected
+2023-07-13 16:31:55,206 INFO server.py Вызов функции process_messages c параметрами (<JimServer(Thread-1, started daemon 6186381312)>,), {'messages': {<socket.socket fd=15, family=2, type=1, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 65040)>: {'action': 'authenticate', 'time': '1689258715.003104', 'user': {'account_name': 'user1', 'password': 'pass'}}}} из модуля __main__. Вызов из функции self._bootstrap_inner(). Вызов из функции check_socket.
+2023-07-13 16:31:55,206 INFO server.py Authenticate message received from user user1
+2023-07-13 16:32:34,320 ERROR server.py Client disconnected
+2023-07-13 16:32:41,957 ERROR server.py Client disconnected
+2023-07-13 16:32:50,609 ERROR server.py Client disconnected

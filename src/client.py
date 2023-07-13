@@ -9,8 +9,8 @@ import typer
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6.QtWidgets import QApplication
 
-from client_gui import ClientMainWindow, UserNameDialog
-from common import (AddContactRequest, ChatMessageRequest, ClientMeta,
+from client_gui import AuthErrorDialog, ClientMainWindow, UserNameDialog
+from common import (AddContactRequest, AuthRequest, ChatMessageRequest,
                     DelContactRequest, GetContactsRequest, GetUsersRequest,
                     Port, PresenceRequest, ReceiveError, recv_message,
                     send_message)
@@ -28,7 +28,12 @@ class JimClient(threading.Thread, QObject):
     connection_lost = pyqtSignal()
 
     def __init__(
-        self, addr: str, port: int, account_name: str, storage: "ClientDatabase"
+        self,
+        addr: str,
+        port: int,
+        account_name: str,
+        password: str,
+        storage: "ClientDatabase",
     ):
         threading.Thread.__init__(self)
         QObject.__init__(self)
@@ -36,13 +41,13 @@ class JimClient(threading.Thread, QObject):
         self.addr = addr
         self.port = port
         self.account_name = account_name
+        self.password = password
 
         self.storage = storage
 
         self.socket = None
         self.running = True
         self._create_socket()
-        self._init_client()
 
     def run(self) -> None:
         while self.running:
@@ -75,7 +80,7 @@ class JimClient(threading.Thread, QObject):
         self.socket.connect((self.addr, self.port))
         logger.info(f"Connected to {self.addr}:{self.port}")
 
-    def _init_client(self) -> None:
+    def init_client(self) -> None:
         self._send_presence_message(status=f"Online")
         self._get_contacts()
 
@@ -83,9 +88,16 @@ class JimClient(threading.Thread, QObject):
         self.running = False
         self.socket.close()
 
+    def _make_auth_message(self) -> AuthRequest:
+        return AuthRequest(
+            time=datetime.now().timestamp(),
+            user=AuthRequest.User(
+                account_name=self.account_name, password=self.password
+            ),
+        )
+
     def _make_presence_message(self, status: str) -> PresenceRequest:
         return PresenceRequest(
-            action="presence",
             time=datetime.now().timestamp(),
             type="status",
             user=PresenceRequest.User(account_name=self.account_name, status=status),
@@ -93,14 +105,12 @@ class JimClient(threading.Thread, QObject):
 
     def _make_get_contacts_message(self) -> GetContactsRequest:
         return GetContactsRequest(
-            action="get_contacts",
             time=datetime.now().timestamp(),
             user_login=self.account_name,
         )
 
     def _make_add_contact_message(self, contact: str) -> AddContactRequest:
         return AddContactRequest(
-            action="add_contact",
             time=datetime.now().timestamp(),
             user_login=self.account_name,
             contact=contact,
@@ -108,7 +118,6 @@ class JimClient(threading.Thread, QObject):
 
     def _make_del_contact_message(self, contact: str) -> DelContactRequest:
         return DelContactRequest(
-            action="del_contact",
             time=datetime.now().timestamp(),
             user_login=self.account_name,
             contact=contact,
@@ -116,10 +125,30 @@ class JimClient(threading.Thread, QObject):
 
     def _make_get_all_users_message(self) -> GetUsersRequest:
         return GetUsersRequest(
-            action="get_users",
             time=datetime.now().timestamp(),
             user_login=self.account_name,
         )
+
+    def authenticate(self) -> tuple[bool, str]:
+        auth_message = self._make_auth_message()
+        with socket_lock:
+            send_message(conn=self.socket, message=auth_message)
+            logger.info("Auth message sent")
+            msg = recv_message(conn=self.socket)
+            logger.info(f"Response: {msg}")
+            response = msg.get("response")
+            if response == 200:
+                logger.info("Authentication successful")
+                return True, ""
+            elif response == 402:
+                logger.info("Authentication failed, wrong password")
+                return False, "Wrong password"
+            elif response == 409:
+                logger.info("Authentication failed, account already logged in")
+                return False, "Account already logged in"
+            else:
+                logger.error("Authentication failed, unknown error")
+                return False, "Unknown error"
 
     def _send_presence_message(self, status: str) -> None:
         presence_message = self._make_presence_message(status=status)
@@ -243,6 +272,7 @@ def main(addr: str, port: int = typer.Argument(default=7777)):
     client_app.exec()
     if start_dialog.ok_pressed:
         account_name = start_dialog.client_name.text()
+        password = start_dialog.client_pass.text()
         del start_dialog
     else:
         exit(0)
@@ -253,8 +283,16 @@ def main(addr: str, port: int = typer.Argument(default=7777)):
         addr=addr,
         port=port,
         account_name=account_name,
+        password=password,
         storage=storage,
     )
+    result, error = client.authenticate()
+    if not result:
+        error_dialog = AuthErrorDialog(error)
+        error_dialog.exec()
+        client.stop()
+        exit(1)
+
     client.daemon = True
     client.start()
 

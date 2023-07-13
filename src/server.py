@@ -12,10 +12,10 @@ from pydantic import ValidationError
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMessageBox
 
-from common import (AddContactRequest, ChatMessageRequest, DelContactRequest,
-                    GetContactsRequest, GetUsersRequest, Port, PresenceRequest,
-                    ReceiveError, Request, Response, ServerMeta, log,
-                    recv_message, send_message)
+from common import (AddContactRequest, AuthRequest, ChatMessageRequest,
+                    DelContactRequest, GetContactsRequest, GetUsersRequest,
+                    Port, PresenceRequest, ReceiveError, Request, Response,
+                    ServerMeta, log, recv_message, send_message)
 from config import server_config as config
 from db import ServerStorage
 from log import server_logger as logger
@@ -90,6 +90,13 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
         if write_list:
             self.send_messages(write_list=write_list)
 
+    def _authentificate_user(self, login: str, password: str) -> bool:
+        if self.storage.user_exists(login=login):
+            return self.storage.check_user_password(login=login, password=password)
+        else:
+            self.storage.add_user(login=login, password=password)
+            return True
+
     @staticmethod
     def parse_message(msg: dict) -> Request | None:
         msg_action = msg.get("action")
@@ -137,6 +144,16 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
                 logger.warning("Invalid message: %s", msg)
                 return None
             logger.info("Get users message received from user %s", msg["user_login"])
+        elif msg_action == "authenticate":
+            try:
+                parsed_message = AuthRequest(**msg)
+            except ValidationError:
+                logger.warning("Invalid message: %s", msg)
+                return None
+            logger.info(
+                "Authenticate message received from user %s",
+                parsed_message.user.account_name,
+            )
         else:
             logger.warning("Unknown message type: %s", msg_action)
             return None
@@ -149,13 +166,21 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
             if not parsed_message:
                 self.queues[sender].put(Response(response=400, alert="Invalid message"))
             else:
-                if parsed_message.action == "presence":
+                if parsed_message.action == "authenticate":
                     account_name = parsed_message.user.account_name
-                    ip_address, port = sender.getpeername()
-                    self.names[account_name] = sender
-                    self.storage.client_loging(
-                        login=account_name, ip_address=ip_address, port=port
-                    )
+                    password = parsed_message.user.password
+                    if self._authentificate_user(login=account_name, password=password):
+                        ip_address, port = sender.getpeername()
+                        self.names[account_name] = sender
+                        self.storage.client_loging(
+                            login=account_name, ip_address=ip_address, port=port
+                        )
+                        self.queues[sender].put(Response(response=200, alert="OK"))
+                    else:
+                        self.queues[sender].put(
+                            Response(response=402, alert="Wrong password")
+                        )
+                if parsed_message.action == "presence":
                     self.queues[sender].put(Response(response=200, alert="OK"))
                 elif parsed_message.action == "msg":
                     from_account = parsed_message.from_account
