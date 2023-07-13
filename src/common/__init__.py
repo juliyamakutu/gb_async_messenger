@@ -1,5 +1,5 @@
-from .decorators import log
-from .exceptions import ReceiveError, ServerError
+from .decorators import log, login_required
+from .exceptions import AccessDeniedError, ReceiveError, ServerError
 from .jim_types import (AddContactRequest, AuthRequest, ChatMessageRequest,
                         DelContactRequest, GetContactsRequest, GetUsersRequest,
                         PresenceRequest, Request, Response)

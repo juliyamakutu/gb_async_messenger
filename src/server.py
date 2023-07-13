@@ -12,10 +12,11 @@ from pydantic import ValidationError
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMessageBox
 
-from common import (AddContactRequest, AuthRequest, ChatMessageRequest,
-                    DelContactRequest, GetContactsRequest, GetUsersRequest,
-                    Port, PresenceRequest, ReceiveError, Request, Response,
-                    ServerMeta, log, recv_message, send_message)
+from common import (AccessDeniedError, AddContactRequest, AuthRequest,
+                    ChatMessageRequest, DelContactRequest, GetContactsRequest,
+                    GetUsersRequest, Port, PresenceRequest, ReceiveError,
+                    Request, Response, ServerMeta, log, login_required,
+                    recv_message, send_message)
 from config import server_config as config
 from db import ServerStorage
 from log import server_logger as logger
@@ -159,6 +160,91 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
             return None
         return parsed_message
 
+    def _process_auth_message(self, sender: socket, parsed_message: Request) -> None:
+        account_name = parsed_message.user.account_name
+        password = parsed_message.user.password
+        if self._authentificate_user(login=account_name, password=password):
+            ip_address, port = sender.getpeername()
+            self.names[account_name] = sender
+            self.storage.client_loging(
+                login=account_name, ip_address=ip_address, port=port
+            )
+            self.queues[sender].put(Response(response=200, alert="OK"))
+        else:
+            self.queues[sender].put(Response(response=402, alert="Wrong password"))
+
+    @login_required
+    def _process_presence_message(
+        self, sender: socket, parsed_message: Request
+    ) -> None:
+        self.queues[sender].put(Response(response=200, alert="OK"))
+
+    @login_required
+    def _process_chat_message(self, sender: socket, parsed_message: Request) -> None:
+        from_account = parsed_message.from_account
+        self.names[from_account] = sender
+        to_chat = parsed_message.to_chat
+        if receiver := self.names.get(to_chat):
+            self.queues[receiver].put(parsed_message)
+            self.storage.add_contact(login=to_chat, contact_login=from_account)
+        self.queues[sender].put(Response(response=200, alert="OK"))
+
+    @login_required
+    def _process_get_contacts_message(
+        self, sender: socket, parsed_message: Request
+    ) -> None:
+        user_login = parsed_message.user_login
+        self.names[user_login] = sender
+        self.queues[sender].put(
+            Response(
+                response=202,
+                alert=self.storage.get_contact_list(login=user_login),
+            )
+        )
+
+    @login_required
+    def _process_add_contact_message(
+        self, sender: socket, parsed_message: Request
+    ) -> None:
+        user_login = parsed_message.user_login
+        contact_login = parsed_message.contact_login
+        self.names[user_login] = sender
+        self.storage.add_contact(login=user_login, contact_login=contact_login)
+        self.queues[sender].put(
+            Response(
+                response=200,
+            )
+        )
+
+    @login_required
+    def _process_del_user_message(
+        self, sender: socket, parsed_message: Request
+    ) -> None:
+        user_login = parsed_message.user_login
+        contact_login = parsed_message.contact_login
+        self.names[user_login] = sender
+        self.storage.del_contact(login=user_login, contact_login=contact_login)
+        self.queues[sender].put(
+            Response(
+                response=200,
+            )
+        )
+
+    @login_required
+    def _process_get_users_message(
+        self, sender: socket, parsed_message: Request
+    ) -> None:
+        user_login = parsed_message.user_login
+        self.names[user_login] = sender
+        self.queues[sender].put(
+            Response(
+                response=202,
+                alert=[
+                    user[0] for user in self.storage.get_all_clients(login=user_login)
+                ],
+            )
+        )
+
     @log(logger)
     def process_messages(self, messages: dict) -> None:
         for sender, message in messages.items():
@@ -166,78 +252,38 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
             if not parsed_message:
                 self.queues[sender].put(Response(response=400, alert="Invalid message"))
             else:
-                if parsed_message.action == "authenticate":
-                    account_name = parsed_message.user.account_name
-                    password = parsed_message.user.password
-                    if self._authentificate_user(login=account_name, password=password):
-                        ip_address, port = sender.getpeername()
-                        self.names[account_name] = sender
-                        self.storage.client_loging(
-                            login=account_name, ip_address=ip_address, port=port
+                try:
+                    if parsed_message.action == "authenticate":
+                        self._process_auth_message(
+                            sender=sender, parsed_message=parsed_message
                         )
-                        self.queues[sender].put(Response(response=200, alert="OK"))
-                    else:
-                        self.queues[sender].put(
-                            Response(response=402, alert="Wrong password")
+                    if parsed_message.action == "presence":
+                        self._process_presence_message(
+                            sender=sender, parsed_message=parsed_message
                         )
-                if parsed_message.action == "presence":
-                    self.queues[sender].put(Response(response=200, alert="OK"))
-                elif parsed_message.action == "msg":
-                    from_account = parsed_message.from_account
-                    self.names[from_account] = sender
-                    to_chat = parsed_message.to_chat
-                    if receiver := self.names.get(to_chat):
-                        self.queues[receiver].put(parsed_message)
-                        self.storage.add_contact(
-                            login=to_chat, contact_login=from_account
+                    elif parsed_message.action == "msg":
+                        self._process_chat_message(
+                            sender=sender, parsed_message=parsed_message
                         )
-                    self.queues[sender].put(Response(response=200, alert="OK"))
-                elif parsed_message.action == "get_contacts":
-                    user_login = parsed_message.user_login
-                    self.names[user_login] = sender
+                    elif parsed_message.action == "get_contacts":
+                        self._process_get_contacts_message(
+                            sender=sender, parsed_message=parsed_message
+                        )
+                    elif parsed_message.action == "add_contact":
+                        self._process_add_contact_message(
+                            sender=sender, parsed_message=parsed_message
+                        )
+                    elif parsed_message.action == "del_contact":
+                        self._process_del_user_message(
+                            sender=sender, parsed_message=parsed_message
+                        )
+                    elif parsed_message.action == "get_users":
+                        self._process_get_users_message(
+                            sender=sender, parsed_message=parsed_message
+                        )
+                except AccessDeniedError:
                     self.queues[sender].put(
-                        Response(
-                            response=202,
-                            alert=self.storage.get_contact_list(login=user_login),
-                        )
-                    )
-                elif parsed_message.action == "add_contact":
-                    user_login = parsed_message.user_login
-                    contact_login = parsed_message.contact_login
-                    self.names[user_login] = sender
-                    self.storage.add_contact(
-                        login=user_login, contact_login=contact_login
-                    )
-                    self.queues[sender].put(
-                        Response(
-                            response=200,
-                        )
-                    )
-                elif parsed_message.action == "del_contact":
-                    user_login = parsed_message.user_login
-                    contact_login = parsed_message.contact_login
-                    self.names[user_login] = sender
-                    self.storage.del_contact(
-                        login=user_login, contact_login=contact_login
-                    )
-                    self.queues[sender].put(
-                        Response(
-                            response=200,
-                        )
-                    )
-                elif parsed_message.action == "get_users":
-                    user_login = parsed_message.user_login
-                    self.names[user_login] = sender
-                    self.queues[sender].put(
-                        Response(
-                            response=202,
-                            alert=[
-                                user[0]
-                                for user in self.storage.get_all_clients(
-                                    login=user_login
-                                )
-                            ],
-                        )
+                        Response(response=401, alert="Access denied")
                     )
 
     def read_clients(self, read_list: list) -> dict:
