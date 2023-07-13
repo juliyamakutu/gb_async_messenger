@@ -13,9 +13,9 @@ from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMessageBox
 
 from common import (AddContactRequest, ChatMessageRequest, DelContactRequest,
-                    GetContactsRequest, Port, PresenceRequest, ReceiveError,
-                    Request, Response, ServerMeta, log, recv_message,
-                    send_message)
+                    GetContactsRequest, GetUsersRequest, Port, PresenceRequest,
+                    ReceiveError, Request, Response, ServerMeta, log,
+                    recv_message, send_message)
 from config import server_config as config
 from db import ServerStorage
 from log import server_logger as logger
@@ -130,6 +130,13 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
                 logger.warning("Invalid message: %s", msg)
                 return None
             logger.info("Del contact message received from user %s", msg["user_login"])
+        elif msg_action == "get_users":
+            try:
+                parsed_message = GetUsersRequest(**msg)
+            except ValidationError:
+                logger.warning("Invalid message: %s", msg)
+                return None
+            logger.info("Get users message received from user %s", msg["user_login"])
         else:
             logger.warning("Unknown message type: %s", msg_action)
             return None
@@ -191,6 +198,20 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
                     self.queues[sender].put(
                         Response(
                             response=200,
+                        )
+                    )
+                elif parsed_message.action == "get_users":
+                    user_login = parsed_message.user_login
+                    self.names[user_login] = sender
+                    self.queues[sender].put(
+                        Response(
+                            response=202,
+                            alert=[
+                                user[0]
+                                for user in self.storage.get_all_clients(
+                                    login=user_login
+                                )
+                            ],
                         )
                     )
 
