@@ -408,3 +408,73 @@
 2023-07-10 16:57:01,890 INFO client.py Contacts message sent
 2023-07-10 16:57:02,098 INFO client.py Got contact list: ['user2', 'user1']
 2023-07-10 16:57:07,936 INFO client.py Message received: {'response': 200, 'alert': 'OK'}
+2023-07-13 14:56:26,850 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 14:56:26,850 INFO client.py Presence message sent
+2023-07-13 14:56:26,883 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 14:56:26,883 INFO client.py Contacts message sent
+2023-07-13 14:56:27,094 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-13 14:57:28,056 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 14:57:28,057 INFO client.py Presence message sent
+2023-07-13 14:57:28,064 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 14:57:28,064 INFO client.py Contacts message sent
+2023-07-13 14:57:28,274 INFO client.py Got contact list: ['user2', 'user1']
+2023-07-13 15:36:24,574 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:36:24,578 INFO client.py Presence message sent
+2023-07-13 15:36:24,797 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 15:36:24,797 INFO client.py Contacts message sent
+2023-07-13 15:36:25,004 INFO client.py Got contact list: []
+2023-07-13 15:40:44,396 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:41:05,602 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:41:05,603 INFO client.py Auth message sent
+2023-07-13 15:41:05,810 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:41:39,609 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:41:39,610 INFO client.py Auth message sent
+2023-07-13 15:41:39,612 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:41:39,612 CRITICAL client.py Unknown response!
+2023-07-13 15:51:27,277 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:51:27,278 INFO client.py Auth message sent
+2023-07-13 15:51:27,303 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:51:53,268 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:51:53,269 INFO client.py Auth message sent
+2023-07-13 15:51:53,272 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:51:53,272 ERROR client.py Authentication failed, unknown error
+2023-07-13 15:52:39,819 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:52:39,819 INFO client.py Auth message sent
+2023-07-13 15:52:40,023 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:52:40,023 ERROR client.py Authentication failed, unknown error
+2023-07-13 15:53:15,702 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:53:15,702 INFO client.py Auth message sent
+2023-07-13 15:53:15,704 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:53:15,704 ERROR client.py Authentication failed, unknown error
+2023-07-13 15:54:00,822 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:54:00,822 INFO client.py Auth message sent
+2023-07-13 15:54:00,825 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:54:00,825 ERROR client.py Authentication failed, unknown error
+2023-07-13 15:54:38,305 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 15:54:38,306 INFO client.py Auth message sent
+2023-07-13 15:54:38,309 INFO client.py Response: {'response': 400, 'alert': 'Invalid message'}
+2023-07-13 15:54:38,309 ERROR client.py Authentication failed, unknown error
+2023-07-13 16:31:24,540 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 16:31:24,541 INFO client.py Auth message sent
+2023-07-13 16:31:25,045 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 16:31:25,046 INFO client.py Authentication successful
+2023-07-13 16:31:39,387 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 16:31:39,388 INFO client.py Auth message sent
+2023-07-13 16:31:39,875 INFO client.py Response: {'response': 402, 'alert': 'Wrong password'}
+2023-07-13 16:31:39,875 INFO client.py Authentication failed, wrong password
+2023-07-13 16:31:48,389 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 16:31:48,389 INFO client.py Auth message sent
+2023-07-13 16:31:48,880 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 16:31:48,880 INFO client.py Authentication successful
+2023-07-13 16:31:55,002 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 16:31:55,003 INFO client.py Auth message sent
+2023-07-13 16:31:55,501 INFO client.py Response: {'response': 402, 'alert': 'Wrong password'}
+2023-07-13 16:31:55,501 INFO client.py Authentication failed, wrong password
+2023-07-13 17:35:21,509 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 17:35:21,509 INFO client.py Auth message sent
+2023-07-13 17:35:21,785 INFO client.py Response: {'response': 200, 'alert': 'OK'}
+2023-07-13 17:35:21,785 INFO client.py Authentication successful
+2023-07-13 17:35:29,324 INFO client.py Connected to 127.0.0.1:7777
+2023-07-13 17:35:29,325 INFO client.py Auth message sent
+2023-07-13 17:35:29,579 INFO client.py Response: {'response': 402, 'alert': 'Wrong password'}
+2023-07-13 17:35:29,579 INFO client.py Authentication failed, wrong password

@@ -21,6 +21,15 @@ class PresenceRequest(Request):
     user: User
 
 
+class AuthRequest(Request):
+    class User(BaseModel):
+        account_name: str
+        password: str
+
+    action = "authenticate"
+    user: User
+
+
 class ChatMessageRequest(Request):
     action = "msg"
     to_chat: str = Field(alias="to")

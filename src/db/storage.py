@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Generator
 
+import bcrypt
 from sqlalchemy import Column, DateTime, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
@@ -31,6 +32,14 @@ class ContactList(Base):
     contact_id = Column(Integer)
 
 
+class Users(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True)
+    login = Column(String, unique=True)
+    password = Column(String)
+    salt = Column(String)
+
+
 class ServerStorage:
     def __init__(self, database_path: str):
         self._engine = create_engine(
@@ -48,6 +57,24 @@ class ServerStorage:
             port=port,
         )
         self.session.add(client_history)
+        self.session.commit()
+
+    def user_exists(self, login: str) -> bool:
+        return self.session.query(Users).filter_by(login=login).count() > 0
+
+    def check_user_password(self, login: str, password: str) -> bool:
+        user = self.session.query(Users).filter_by(login=login).first()
+        if user:
+            password_hash = bcrypt.hashpw(password.encode(), user.salt)
+            if user.password == password_hash:
+                return True
+        return False
+
+    def add_user(self, login: str, password: str) -> None:
+        salt = bcrypt.gensalt()
+        password_hash = bcrypt.hashpw(password.encode(), salt)
+        user = Users(login=login, password=password_hash, salt=salt)
+        self.session.add(user)
         self.session.commit()
 
     def client_loging(self, *, login: str, ip_address: str, port: int) -> None:

@@ -2,11 +2,11 @@ import sys
 
 from PyQt6.QtCore import Qt, pyqtSlot
 from PyQt6.QtGui import QBrush, QColor, QStandardItem, QStandardItemModel
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, qApp
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 
+from db import MessageType
 from log import client_logger, server_logger
 
-from ..db import MessageType
 from .add_contact import AddContactDialog
 from .client_design import Ui_MainClientWindow
 from .del_contact import DelContactDialog
@@ -43,7 +43,7 @@ class ClientMainWindow(QMainWindow):
         self.messages = QMessageBox()
         self.current_chat = None
         self.ui.list_messages.setHorizontalScrollBarPolicy(
-            Qt.WidgetAttribute.ScrollBarAlwaysOff
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
         )
         self.ui.list_messages.setWordWrap(True)
 

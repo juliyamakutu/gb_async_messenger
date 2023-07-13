@@ -14,3 +14,9 @@ class ServerError(Exception):
     """Raised when a server error occurs."""
 
     pass
+
+
+class AccessDeniedError(Exception):
+    """Raised when a user not authenticated."""
+
+    pass
