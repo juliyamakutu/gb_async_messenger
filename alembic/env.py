@@ -25,7 +25,7 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-config.set_main_option("sqlalchemy.url", server_config.database_path)
+config.set_main_option("sqlalchemy.url", "sqlite:///server.db")
 
 
 def run_migrations_offline() -> None:
