@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>База данных &#8212; документация AGBM </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Клиент" href="client.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-db">
+<span id="id1"></span><h1>База данных<a class="headerlink" href="#module-db" title="Permalink to this heading">¶</a></h1>
+<p>Модуль классов для работы с базой данных.</p>
+<section id="module-db.client_db">
+<span id="id2"></span><h2>Клиент<a class="headerlink" href="#module-db.client_db" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.client_db.</span></span><span class="sig-name descname"><span class="pre">ClientDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_file_postfix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - база данных клиента.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.ContactList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContactList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.ContactList"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.ContactList" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение списка контактов.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.MessageHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#db.client_db.MessageType" title="db.client_db.MessageType"><span class="pre">MessageType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.MessageHistory"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.MessageHistory" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение таблицы истории сообщений.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.check_contact">
+<span class="sig-name descname"><span class="pre">check_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.check_contact"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.check_contact" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Проверяет наличие контакта в списке контактов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.get_contacts">
+<span class="sig-name descname"><span class="pre">get_contacts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.get_contacts"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.get_contacts" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает список контактов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.get_history">
+<span class="sig-name descname"><span class="pre">get_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.get_history"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.get_history" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает историю переписки с указанным контактом.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.save_message">
+<span class="sig-name descname"><span class="pre">save_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#db.client_db.MessageType" title="db.client_db.MessageType"><span class="pre">MessageType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.save_message"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.save_message" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Сохраняет сообщение в базу данных.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.client_db.ClientDatabase.update_contact_list">
+<span class="sig-name descname"><span class="pre">update_contact_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/client_db.html#ClientDatabase.update_contact_list"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.ClientDatabase.update_contact_list" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Обновляет список контактов.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.client_db.MessageType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.client_db.</span></span><span class="sig-name descname"><span class="pre">MessageType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/client_db.html#MessageType"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.client_db.MessageType" title="Ссылка на это определение">¶</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="db.client_db.MessageType.income">
+<span class="sig-name descname"><span class="pre">income</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'income'</span></em><a class="headerlink" href="#db.client_db.MessageType.income" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.client_db.MessageType.outcome">
+<span class="sig-name descname"><span class="pre">outcome</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'outcome'</span></em><a class="headerlink" href="#db.client_db.MessageType.outcome" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-db.storage">
+<span id="id3"></span><h2>Сервер<a class="headerlink" href="#module-db.storage" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="db.storage.Client">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.storage.</span></span><span class="sig-name descname"><span class="pre">Client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/storage.html#Client"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.Client" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение таблицы клиентов.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Client.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#db.storage.Client.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Client.login">
+<span class="sig-name descname"><span class="pre">login</span></span><a class="headerlink" href="#db.storage.Client.login" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.storage.ClientHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.storage.</span></span><span class="sig-name descname"><span class="pre">ClientHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/storage.html#ClientHistory"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ClientHistory" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение таблицы истории клиентов.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ClientHistory.client_id">
+<span class="sig-name descname"><span class="pre">client_id</span></span><a class="headerlink" href="#db.storage.ClientHistory.client_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ClientHistory.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#db.storage.ClientHistory.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ClientHistory.ip_address">
+<span class="sig-name descname"><span class="pre">ip_address</span></span><a class="headerlink" href="#db.storage.ClientHistory.ip_address" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ClientHistory.last_login">
+<span class="sig-name descname"><span class="pre">last_login</span></span><a class="headerlink" href="#db.storage.ClientHistory.last_login" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ClientHistory.port">
+<span class="sig-name descname"><span class="pre">port</span></span><a class="headerlink" href="#db.storage.ClientHistory.port" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.storage.ContactList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.storage.</span></span><span class="sig-name descname"><span class="pre">ContactList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/storage.html#ContactList"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ContactList" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение таблицы списка контактов.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ContactList.client_id">
+<span class="sig-name descname"><span class="pre">client_id</span></span><a class="headerlink" href="#db.storage.ContactList.client_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ContactList.contact_id">
+<span class="sig-name descname"><span class="pre">contact_id</span></span><a class="headerlink" href="#db.storage.ContactList.contact_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.ContactList.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#db.storage.ContactList.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.storage.ServerStorage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.storage.</span></span><span class="sig-name descname"><span class="pre">ServerStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/storage.html#ServerStorage"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - база данных сервера.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.add_contact">
+<span class="sig-name descname"><span class="pre">add_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.add_contact"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.add_contact" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод добавления контакта.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.add_user">
+<span class="sig-name descname"><span class="pre">add_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.add_user"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.add_user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод добавления пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.check_user_password">
+<span class="sig-name descname"><span class="pre">check_user_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.check_user_password"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.check_user_password" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод проверки пароля пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.client_loging">
+<span class="sig-name descname"><span class="pre">client_loging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.client_loging"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.client_loging" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод добавления записи в таблицу клиентов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.del_contact">
+<span class="sig-name descname"><span class="pre">del_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.del_contact"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.del_contact" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод удаления контакта.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.get_all_clients">
+<span class="sig-name descname"><span class="pre">get_all_clients</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.get_all_clients"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.get_all_clients" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод получения списка всех клиентов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.get_contact_list">
+<span class="sig-name descname"><span class="pre">get_contact_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.get_contact_list"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.get_contact_list" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод получения списка контактов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.storage.ServerStorage.user_exists">
+<span class="sig-name descname"><span class="pre">user_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/db/storage.html#ServerStorage.user_exists"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.ServerStorage.user_exists" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод проверки существования пользователя.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.storage.Users">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.storage.</span></span><span class="sig-name descname"><span class="pre">Users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/storage.html#Users"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#db.storage.Users" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Класс - отображение таблицы пользователей.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Users.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#db.storage.Users.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Users.login">
+<span class="sig-name descname"><span class="pre">login</span></span><a class="headerlink" href="#db.storage.Users.login" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Users.password">
+<span class="sig-name descname"><span class="pre">password</span></span><a class="headerlink" href="#db.storage.Users.password" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.storage.Users.salt">
+<span class="sig-name descname"><span class="pre">salt</span></span><a class="headerlink" href="#db.storage.Users.salt" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">AGBM</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="server.html">Сервер</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Клиент</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">База данных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-db.client_db">Клиент</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-db.storage">Сервер</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="client.html" title="предыдущая глава">Клиент</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Makutu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/database.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

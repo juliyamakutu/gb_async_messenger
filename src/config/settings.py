@@ -4,6 +4,8 @@ from pydantic import BaseSettings
 
 
 class CommonSettings(BaseSettings):
+    """Общие настройки для клиента и сервера"""
+
     bytes_to_recv: int = 1024
     encoding = "utf-8"
     log_format = "%(asctime)s %(levelname)s %(filename)s %(message)s"
@@ -11,6 +13,8 @@ class CommonSettings(BaseSettings):
 
 
 class ServerSettings(CommonSettings):
+    """Настройки сервера"""
+
     host: str = ""
     port: int = 7777
     max_connections: int = 5
@@ -22,6 +26,8 @@ class ServerSettings(CommonSettings):
 
 
 class ClientSettings(CommonSettings):
+    """Настройки клиента"""
+
     host: str = "localhost"
     port: int = 7777
     database_path: str = "sqlite:///client.db"

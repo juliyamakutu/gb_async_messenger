@@ -7,6 +7,8 @@ from .exceptions import AccessDeniedError
 
 
 def log(logger):
+    """Декоратор, выполняющий логирование вызовов функций."""
+
     def _log(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -25,6 +27,8 @@ def log(logger):
 
 
 def login_required(func):
+    """Декоратор, проверяющий, что клиент авторизован на сервере."""
+
     def wrapper(*args, **kwargs):
         server = args[0]
         for arg in args:

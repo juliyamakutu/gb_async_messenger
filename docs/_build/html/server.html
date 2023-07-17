@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Сервер &#8212; документация AGBM </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Клиент" href="client.html" />
+    <link rel="prev" title="Welcome to AGBM’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-server">
+<span id="id1"></span><h1>Сервер<a class="headerlink" href="#module-server" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.JimServer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">JimServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="index.html#db.ServerStorage" title="db.storage.ServerStorage"><span class="pre">ServerStorage</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/server.html#JimServer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code></p>
+<p>Сервер JIM протокола. Работает в отдельном thread’е.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.check_socket">
+<span class="sig-name descname"><span class="pre">check_socket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/server.html#JimServer.check_socket"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.check_socket" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Проверка сокета на наличие новых сообщений.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.get_clients_statistics">
+<span class="sig-name descname"><span class="pre">get_clients_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span></span></span><a class="reference internal" href="_modules/server.html#JimServer.get_clients_statistics"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.get_clients_statistics" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Получение статистики по клиентам.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.parse_message">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Request</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/server.html#JimServer.parse_message"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.parse_message" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Парсинг сообщения.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="server.JimServer.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#server.JimServer.port" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.process_messages">
+<span class="sig-name descname"><span class="pre">process_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/server.html#JimServer.process_messages"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.process_messages" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Обработка сообщений от клиентов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.process_new_connections">
+<span class="sig-name descname"><span class="pre">process_new_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/server.html#JimServer.process_new_connections"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.process_new_connections" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Обработка новых подключений.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.read_clients">
+<span class="sig-name descname"><span class="pre">read_clients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/server.html#JimServer.read_clients"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.read_clients" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Чтение сообщений от клиентов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/server.html#JimServer.run"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.run" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Запуск сервера.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.send_messages">
+<span class="sig-name descname"><span class="pre">send_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">write_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/server.html#JimServer.send_messages"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.send_messages" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Отправка сообщений клиентам.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.JimServer.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/server.html#JimServer.stop"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#server.JimServer.stop" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Остановка сервера.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">AGBM</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Сервер</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#server.JimServer"><code class="docutils literal notranslate"><span class="pre">JimServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Клиент</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="предыдущая глава">Welcome to AGBM’s documentation!</a></li>
+      <li>Next: <a href="client.html" title="следующая глава">Клиент</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Makutu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -22,6 +22,8 @@ socket_lock = threading.Lock()
 
 
 class JimClient(threading.Thread, QObject):
+    """Клиент JIM протокола. Работает в отдельном потоке."""
+
     port = Port()
 
     new_message = pyqtSignal(str)
@@ -50,6 +52,7 @@ class JimClient(threading.Thread, QObject):
         self._create_socket()
 
     def run(self) -> None:
+        """Основной цикл работы клиента."""
         while self.running:
             time.sleep(1)
             with socket_lock:
@@ -76,19 +79,23 @@ class JimClient(threading.Thread, QObject):
                     self.socket.settimeout(5)
 
     def _create_socket(self) -> None:
+        """Создаёт сокет для работы с сервером."""
         self.socket = socket(AF_INET, SOCK_STREAM)
         self.socket.connect((self.addr, self.port))
         logger.info(f"Connected to {self.addr}:{self.port}")
 
     def init_client(self) -> None:
+        """Инициализирует клиента."""
         self._send_presence_message(status="Online")
         self._get_contacts()
 
     def stop(self):
+        """Останавливает поток клиента."""
         self.running = False
         self.socket.close()
 
     def _make_auth_message(self) -> AuthRequest:
+        """Создаёт сообщение для аутентификации."""
         return AuthRequest(
             time=datetime.now().timestamp(),
             user=AuthRequest.User(
@@ -97,6 +104,7 @@ class JimClient(threading.Thread, QObject):
         )
 
     def _make_presence_message(self, status: str) -> PresenceRequest:
+        """Создаёт сообщение для отправки статуса клиента."""
         return PresenceRequest(
             time=datetime.now().timestamp(),
             type="status",
@@ -104,12 +112,14 @@ class JimClient(threading.Thread, QObject):
         )
 
     def _make_get_contacts_message(self) -> GetContactsRequest:
+        """Создаёт сообщение для получения контактов."""
         return GetContactsRequest(
             time=datetime.now().timestamp(),
             user_login=self.account_name,
         )
 
     def _make_add_contact_message(self, contact: str) -> AddContactRequest:
+        """Создаёт сообщение для добавления контакта."""
         return AddContactRequest(
             time=datetime.now().timestamp(),
             user_login=self.account_name,
@@ -117,6 +127,7 @@ class JimClient(threading.Thread, QObject):
         )
 
     def _make_del_contact_message(self, contact: str) -> DelContactRequest:
+        """Создаёт сообщение для удаления контакта."""
         return DelContactRequest(
             time=datetime.now().timestamp(),
             user_login=self.account_name,
@@ -124,12 +135,14 @@ class JimClient(threading.Thread, QObject):
         )
 
     def _make_get_all_users_message(self) -> GetUsersRequest:
+        """Создаёт сообщение для получения списка всех пользователей."""
         return GetUsersRequest(
             time=datetime.now().timestamp(),
             user_login=self.account_name,
         )
 
     def authenticate(self) -> tuple[bool, str]:
+        """Аутентификация клиента."""
         auth_message = self._make_auth_message()
         with socket_lock:
             send_message(conn=self.socket, message=auth_message)
@@ -151,6 +164,7 @@ class JimClient(threading.Thread, QObject):
                 return False, "Unknown error"
 
     def _send_presence_message(self, status: str) -> None:
+        """Отправляет сообщение о присутствии клиента."""
         presence_message = self._make_presence_message(status=status)
         with socket_lock:
             send_message(conn=self.socket, message=presence_message)
@@ -159,6 +173,7 @@ class JimClient(threading.Thread, QObject):
             logger.info(f"Response: {msg}")
 
     def _get_contacts(self) -> None:
+        """Получает список контактов."""
         get_contacts_message = self._make_get_contacts_message()
         with socket_lock:
             send_message(conn=self.socket, message=get_contacts_message)
@@ -171,6 +186,7 @@ class JimClient(threading.Thread, QObject):
         self.storage.update_contact_list(contact_list=msg.get("alert"))
 
     def get_all_users(self) -> list[str]:
+        """Получает список всех пользователей."""
         get_all_users_message = self._make_get_all_users_message()
         with socket_lock:
             send_message(conn=self.socket, message=get_all_users_message)
@@ -182,6 +198,7 @@ class JimClient(threading.Thread, QObject):
                     return msg.get("alert")
 
     def add_contact(self, contact: str) -> None:
+        """Добавляет контакт."""
         add_contact_message = self._make_add_contact_message(contact=contact)
         with socket_lock:
             send_message(conn=self.socket, message=add_contact_message)
@@ -193,6 +210,7 @@ class JimClient(threading.Thread, QObject):
         self._get_contacts()
 
     def del_contact(self, contact: str) -> None:
+        """Удаляет контакт."""
         del_contact_message = self._make_del_contact_message(contact=contact)
         send_message(conn=self.socket, message=del_contact_message)
         logger.info("Del contact message sent")
@@ -203,6 +221,7 @@ class JimClient(threading.Thread, QObject):
         self._get_contacts()
 
     def make_text_message(self, to_chat: str, message: str) -> ChatMessageRequest:
+        """Создаёт сообщение для отправки текстового сообщения."""
         data = {
             "time": datetime.now().timestamp(),
             "to": to_chat,
@@ -212,6 +231,7 @@ class JimClient(threading.Thread, QObject):
         return ChatMessageRequest(**data)
 
     def get_messages(self):
+        """Получает сообщения с сервера."""
         with socket_lock:
             try:
                 msg = recv_message(conn=self.socket)
@@ -241,6 +261,7 @@ class JimClient(threading.Thread, QObject):
                     return f"{msg.get('user', {}).get('account_name')} connected"
 
     def send_message(self, message: str, receiver: str):
+        """Отправляет сообщение."""
         with socket_lock:
             try:
                 send_message(
@@ -266,6 +287,7 @@ class JimClient(threading.Thread, QObject):
 
 
 def main(addr: str, port: int = typer.Argument(default=7777)):
+    """Запускает клиентское приложение."""
     client_app = QApplication(sys.argv)
 
     start_dialog = UserNameDialog()
