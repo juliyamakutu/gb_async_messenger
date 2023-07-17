@@ -10,6 +10,12 @@ pythonpath = [
   "src",
 ]
 
+[tool.flake8]
+max-line-length = 120
+per-file-ignores = [
+    '__init__.py:F401',
+]
+
 [project]
 name = "amsg"
 version = "0.5"
@@ -30,6 +36,7 @@ dependencies = [
     "PyQt6>=6.5.1",
     "configparser>=5.3.0",
     "bcrypt>=4.0.1",
+    "Flake8-pyproject>=1.2.3",
 ]
 readme = "README.md"
 requires-python = ">=3.11"

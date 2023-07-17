@@ -58,7 +58,7 @@ class JimClient(threading.Thread, QObject):
                     message = self.get_messages()
                 except OSError as e:
                     if e.errno:
-                        logger.critical(f"Lost connection to server!")
+                        logger.critical("Lost connection to server!")
                         self.running = False
                         self.connection_lost.emit()
                 except (
@@ -67,7 +67,7 @@ class JimClient(threading.Thread, QObject):
                     ConnectionResetError,
                     TypeError,
                 ):
-                    logger.critical(f"Connection timed out!")
+                    logger.critical("Connection timed out!")
                     self.running = False
                     self.connection_lost.emit()
                 else:
@@ -81,7 +81,7 @@ class JimClient(threading.Thread, QObject):
         logger.info(f"Connected to {self.addr}:{self.port}")
 
     def init_client(self) -> None:
-        self._send_presence_message(status=f"Online")
+        self._send_presence_message(status="Online")
         self._get_contacts()
 
     def stop(self):

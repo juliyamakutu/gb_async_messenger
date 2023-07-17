@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import (QApplication, QDialog, QLabel, QLineEdit,
-                             QPushButton)
+from PyQt6.QtWidgets import QDialog, QLabel
 
 
 class AuthErrorDialog(QDialog):
