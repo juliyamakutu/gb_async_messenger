@@ -12,6 +12,8 @@ else:
 
 
 class Port:
+    """Дескриптор для проверки значения порта."""
+
     def __set__(self, obj, value):
         if (value < 1024) or (value > 65536):
             logger.critical(f"Wrong port number {value}")
@@ -29,6 +31,8 @@ class Port:
 
 
 class ServerMeta(type):
+    """Метакласс для проверки корректности создания сервера."""
+
     def __init__(self, clsname, bases, clsdict):
         instructions = []
         for attr, value in clsdict.items():
@@ -45,6 +49,8 @@ class ServerMeta(type):
 
 
 class ClientMeta(type):
+    """Метакласс для проверки корректности создания клиента."""
+
     def __init__(self, clsname, bases, clsdict):
         instructions = []
         for attr, value in clsdict.items():

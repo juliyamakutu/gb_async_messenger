@@ -12,7 +12,11 @@ class MessageType(Enum):
 
 
 class ClientDatabase:
+    """Класс - база данных клиента."""
+
     class MessageHistory:
+        """Класс - отображение таблицы истории сообщений."""
+
         def __init__(self, message_type: MessageType, contact: str, message: str):
             self.message_type = message_type
             self.contact = contact
@@ -20,6 +24,8 @@ class ClientDatabase:
             self.time = datetime.now()
 
     class ContactList:
+        """Класс - отображение списка контактов."""
+
         def __init__(self, contact: str):
             self.contact = contact
 
@@ -56,11 +62,13 @@ class ClientDatabase:
     def save_message(
         self, *, message_type: MessageType, contact: str, message: str
     ) -> None:
+        """Сохраняет сообщение в базу данных."""
         message = self.MessageHistory(message_type, contact, message)
         self.session.add(message)
         self.session.commit()
 
     def update_contact_list(self, *, contact_list: list[str]) -> None:
+        """Обновляет список контактов."""
         self.session.query(self.ContactList).delete()
         for contact in contact_list:
             contact = self.ContactList(contact)
@@ -68,11 +76,13 @@ class ClientDatabase:
         self.session.commit()
 
     def get_contacts(self) -> list[str]:
+        """Возвращает список контактов."""
         return [
             contact.contact for contact in self.session.query(self.ContactList).all()
         ]
 
     def get_history(self, contact: str) -> list[tuple[str, str, str, datetime]]:
+        """Возвращает историю переписки с указанным контактом."""
         return [
             (
                 message_history.message_type,
@@ -86,6 +96,7 @@ class ClientDatabase:
         ]
 
     def check_contact(self, contact: str) -> bool:
+        """Проверяет наличие контакта в списке контактов."""
         return bool(
             self.session.query(self.ContactList).filter_by(contact=contact).count()
         )

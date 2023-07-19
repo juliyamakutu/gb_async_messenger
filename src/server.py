@@ -25,6 +25,8 @@ from server_gui import (ClientsWindow, ConfigWindow, MainWindow,
 
 
 class JimServer(threading.Thread, metaclass=ServerMeta):
+    """Сервер JIM протокола. Работает в отдельном thread'е."""
+
     port = Port()
 
     def __init__(self, addr: str, port: int, storage: "ServerStorage"):
@@ -46,11 +48,13 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
         super().__init__()
 
     def run(self):
+        """Запуск сервера."""
         while self.running:
             self.process_new_connections()
             self.check_socket()
 
     def _create_server(self) -> None:
+        """Создание сокета сервера."""
         self.server = socket(AF_INET, SOCK_STREAM)
         self.server.bind((self.addr, self.port))
         self.server.listen(config.max_connections)
@@ -58,12 +62,14 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
         logger.info("Server started on %s:%s", self.addr, self.port)
 
     def stop(self):
+        """Остановка сервера."""
         for client in self.clients:
             client.close()
         self.running = False
         self.server.close()
 
     def process_new_connections(self):
+        """Обработка новых подключений."""
         try:
             client, client_address = self.server.accept()
         except OSError:
@@ -74,6 +80,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
             self.queues[client] = Queue()
 
     def check_socket(self):
+        """Проверка сокета на наличие новых сообщений."""
         read_list = []
         write_list = []
         messages = {}
@@ -92,6 +99,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
             self.send_messages(write_list=write_list)
 
     def _authentificate_user(self, login: str, password: str) -> bool:
+        """Аутентификация пользователя."""
         if self.storage.user_exists(login=login):
             return self.storage.check_user_password(login=login, password=password)
         else:
@@ -100,6 +108,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
 
     @staticmethod
     def parse_message(msg: dict) -> Request | None:
+        """Парсинг сообщения."""
         msg_action = msg.get("action")
         if msg_action == "presence":
             try:
@@ -161,6 +170,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
         return parsed_message
 
     def _process_auth_message(self, sender: socket, parsed_message: Request) -> None:
+        """Обработка сообщения аутентификации."""
         account_name = parsed_message.user.account_name
         password = parsed_message.user.password
         if self._authentificate_user(login=account_name, password=password):
@@ -177,10 +187,12 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
     def _process_presence_message(
         self, sender: socket, parsed_message: Request
     ) -> None:
+        """Обработка сообщения присутствия."""
         self.queues[sender].put(Response(response=200, alert="OK"))
 
     @login_required
     def _process_chat_message(self, sender: socket, parsed_message: Request) -> None:
+        """Обработка сообщения чата."""
         from_account = parsed_message.from_account
         self.names[from_account] = sender
         to_chat = parsed_message.to_chat
@@ -193,6 +205,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
     def _process_get_contacts_message(
         self, sender: socket, parsed_message: Request
     ) -> None:
+        """Обработка сообщения получения контактов."""
         user_login = parsed_message.user_login
         self.names[user_login] = sender
         self.queues[sender].put(
@@ -206,6 +219,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
     def _process_add_contact_message(
         self, sender: socket, parsed_message: Request
     ) -> None:
+        """Обработка сообщения добавления контакта."""
         user_login = parsed_message.user_login
         contact_login = parsed_message.contact_login
         self.names[user_login] = sender
@@ -220,6 +234,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
     def _process_del_user_message(
         self, sender: socket, parsed_message: Request
     ) -> None:
+        """Обработка сообщения удаления контакта."""
         user_login = parsed_message.user_login
         contact_login = parsed_message.contact_login
         self.names[user_login] = sender
@@ -234,6 +249,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
     def _process_get_users_message(
         self, sender: socket, parsed_message: Request
     ) -> None:
+        """Обработка сообщения получения списка пользователей."""
         user_login = parsed_message.user_login
         self.names[user_login] = sender
         self.queues[sender].put(
@@ -247,6 +263,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
 
     @log(logger)
     def process_messages(self, messages: dict) -> None:
+        """Обработка сообщений от клиентов."""
         for sender, message in messages.items():
             parsed_message = self.parse_message(message)
             if not parsed_message:
@@ -287,6 +304,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
                     )
 
     def read_clients(self, read_list: list) -> dict:
+        """Чтение сообщений от клиентов."""
         messages = {}
         for connection in read_list:
             try:
@@ -304,6 +322,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
         return messages
 
     def send_messages(self, write_list: list) -> None:
+        """Отправка сообщений клиентам."""
         for connection in write_list:
             if not self.queues[connection].empty():
                 message = self.queues[connection].get()
@@ -321,6 +340,7 @@ class JimServer(threading.Thread, metaclass=ServerMeta):
                     self.sent_count[connection] += 1
 
     def get_clients_statistics(self) -> Generator:
+        """Получение статистики по клиентам."""
         for connection in self.clients:
             ip, port = connection.getpeername()
             login = ""

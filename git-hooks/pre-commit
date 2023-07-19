@@ -11,5 +11,6 @@ set -e
 
 black --config pyproject.toml $FILES
 isort $FILES
+flake8p $FILES
 
 git add $FILES

@@ -20,11 +20,13 @@ else:
 
 # @log(logger)
 def send_message(conn: socket, message: Request | Response) -> None:
+    """Отправка сообщения в формате JIM в сокет"""
     conn.send(message.json(by_alias=True).encode(encoding=config.encoding))
 
 
 # @log(logger)
 def recv_message(conn: socket) -> dict | None:
+    """Получение сообщения из сокета"""
     msg_bytes = conn.recv(config.bytes_to_recv)
     if len(msg_bytes) == 0:
         return None

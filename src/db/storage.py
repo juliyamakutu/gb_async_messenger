@@ -11,12 +11,16 @@ Base = declarative_base()
 
 
 class Client(Base):
+    """Класс - отображение таблицы клиентов."""
+
     __tablename__ = "clients"
     id = Column(Integer, primary_key=True)
     login = Column(String, unique=True)
 
 
 class ClientHistory(Base):
+    """Класс - отображение таблицы истории клиентов."""
+
     __tablename__ = "client_history"
     id = Column(Integer, primary_key=True)
     client_id = Column(Integer)
@@ -26,6 +30,8 @@ class ClientHistory(Base):
 
 
 class ContactList(Base):
+    """Класс - отображение таблицы списка контактов."""
+
     __tablename__ = "contact_list"
     id = Column(Integer, primary_key=True)
     client_id = Column(Integer)
@@ -33,6 +39,8 @@ class ContactList(Base):
 
 
 class Users(Base):
+    """Класс - отображение таблицы пользователей."""
+
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     login = Column(String, unique=True)
@@ -41,6 +49,8 @@ class Users(Base):
 
 
 class ServerStorage:
+    """Класс - база данных сервера."""
+
     def __init__(self, database_path: str):
         self._engine = create_engine(
             f"sqlite:///{database_path}",
@@ -50,6 +60,7 @@ class ServerStorage:
         self.session = sessionmaker(bind=self._engine)()
 
     def _client_history(self, client_id: int, ip_address: str, port: int) -> None:
+        """Метод добавления записи в таблицу истории клиентов."""
         client_history = ClientHistory(
             client_id=client_id,
             last_login=datetime.now(),
@@ -60,9 +71,11 @@ class ServerStorage:
         self.session.commit()
 
     def user_exists(self, login: str) -> bool:
+        """Метод проверки существования пользователя."""
         return self.session.query(Users).filter_by(login=login).count() > 0
 
     def check_user_password(self, login: str, password: str) -> bool:
+        """Метод проверки пароля пользователя."""
         user = self.session.query(Users).filter_by(login=login).first()
         if user:
             password_hash = bcrypt.hashpw(password.encode(), user.salt)
@@ -71,6 +84,7 @@ class ServerStorage:
         return False
 
     def add_user(self, login: str, password: str) -> None:
+        """Метод добавления пользователя."""
         salt = bcrypt.gensalt()
         password_hash = bcrypt.hashpw(password.encode(), salt)
         user = Users(login=login, password=password_hash, salt=salt)
@@ -78,6 +92,7 @@ class ServerStorage:
         self.session.commit()
 
     def client_loging(self, *, login: str, ip_address: str, port: int) -> None:
+        """Метод добавления записи в таблицу клиентов."""
         client = self.session.query(Client).filter_by(login=login).first()
         if not client:
             client = Client(login=login)
@@ -86,6 +101,7 @@ class ServerStorage:
         self._client_history(client.id, ip_address, port)
 
     def get_all_clients(self) -> Generator:
+        """Метод получения списка всех клиентов."""
         clients = self.session.query(Client).all()
         for client in clients:
             client_history = (
@@ -97,6 +113,7 @@ class ServerStorage:
             yield client.login, client_history.last_login, client_history.ip_address, client_history.port
 
     def add_contact(self, *, login: str, contact_login: str) -> None:
+        """Метод добавления контакта."""
         client = self.session.query(Client).filter_by(login=login).first()
         contact = self.session.query(Client).filter_by(login=contact_login).first()
         if not client or not contact:
@@ -111,6 +128,7 @@ class ServerStorage:
             self.session.commit()
 
     def del_contact(self, *, login: str, contact_login: str) -> None:
+        """Метод удаления контакта."""
         client = self.session.query(Client).filter_by(login=login).first()
         contact = self.session.query(Client).filter_by(login=contact_login).first()
         if not client or not contact:
@@ -125,6 +143,7 @@ class ServerStorage:
             self.session.commit()
 
     def get_contact_list(self, *, login: str) -> list:
+        """Метод получения списка контактов."""
         client = self.session.query(Client).filter_by(login=login).first()
         if not client:
             return []
