@@ -1,9 +1,12 @@
+build
 client
 client_gui
 common
 config
 db
+dist
 log
 server
 setup_client
+setup_client_exe
 setup_server

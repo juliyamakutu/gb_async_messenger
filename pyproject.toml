@@ -39,6 +39,7 @@ dependencies = [
     "Flake8-pyproject>=1.2.3",
     "sphinx>=7.0.1",
     "wheel>=0.40.0",
+    "cx-freeze>=6.15.4",
 ]
 readme = "README.md"
 requires-python = ">=3.11"
