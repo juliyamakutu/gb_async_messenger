@@ -6,7 +6,7 @@ from config import client_config as config
 
 _format = logging.Formatter(config.log_format)
 
-log_filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), "client.log")
+log_filename = os.path.join(os.getcwd(), "client.log")
 
 _console_handler = logging.StreamHandler(sys.stderr)
 _file_handler = logging.FileHandler(log_filename, encoding=config.encoding)
