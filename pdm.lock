@@ -366,10 +366,16 @@ version = "2.0.3"
 requires_python = ">=3.7"
 summary = "HTTP library with thread-safe connection pooling, file post, and more."
 
+[[package]]
+name = "wheel"
+version = "0.40.0"
+requires_python = ">=3.7"
+summary = "A built-package format for Python"
+
 [metadata]
 lock_version = "4.2"
 groups = ["default"]
-content_hash = "sha256:ab5c9e17f438358fcc9ee8856e048eb93f4c3f02c3a3c5ee5f3fc4ea6fff2c3f"
+content_hash = "sha256:78754af9d89db8bd5c28c675a066470a042b708978e5a4d99580b5632cf4cc0f"
 
 [metadata.files]
 "alabaster 0.7.13" = [
@@ -856,4 +862,8 @@ content_hash = "sha256:ab5c9e17f438358fcc9ee8856e048eb93f4c3f02c3a3c5ee5f3fc4ea6
 "urllib3 2.0.3" = [
     {url = "https://files.pythonhosted.org/packages/8a/03/ad9306a50d05c166e3456fe810f33cee2b8b2a7a6818ec5d4908c4ec6b36/urllib3-2.0.3-py3-none-any.whl", hash = "sha256:48e7fafa40319d358848e1bc6809b208340fafe2096f1725d05d67443d0483d1"},
     {url = "https://files.pythonhosted.org/packages/d6/af/3b4cfedd46b3addab52e84a71ab26518272c23c77116de3c61ead54af903/urllib3-2.0.3.tar.gz", hash = "sha256:bee28b5e56addb8226c96f7f13ac28cb4c301dd5ea8a6ca179c0b9835e032825"},
+]
+"wheel 0.40.0" = [
+    {url = "https://files.pythonhosted.org/packages/61/86/cc8d1ff2ca31a312a25a708c891cf9facbad4eae493b3872638db6785eb5/wheel-0.40.0-py3-none-any.whl", hash = "sha256:d236b20e7cb522daf2390fa84c55eea81c5c30190f90f29ae2ca1ad8355bf247"},
+    {url = "https://files.pythonhosted.org/packages/fc/ef/0335f7217dd1e8096a9e8383e1d472aa14717878ffe07c4772e68b6e8735/wheel-0.40.0.tar.gz", hash = "sha256:cd1196f3faee2b31968d626e1731c94f99cbdb67cf5a46e4f5656cbee7738873"},
 ]

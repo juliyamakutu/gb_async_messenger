@@ -38,6 +38,7 @@ dependencies = [
     "bcrypt>=4.0.1",
     "Flake8-pyproject>=1.2.3",
     "sphinx>=7.0.1",
+    "wheel>=0.40.0",
 ]
 readme = "README.md"
 requires-python = ">=3.11"
