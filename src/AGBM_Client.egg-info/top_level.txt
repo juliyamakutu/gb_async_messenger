@@ -1,0 +1,6 @@
+client
+client_gui
+common
+config
+db
+log
