@@ -11,6 +11,8 @@ from typing import Generator
 from pydantic import ValidationError
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMessageBox
+from server_gui import (ClientsWindow, ConfigWindow, MainWindow,
+                        create_active_clients_table, create_clients_table)
 
 from common import (AccessDeniedError, AddContactRequest, AuthRequest,
                     ChatMessageRequest, DelContactRequest, GetContactsRequest,
@@ -20,8 +22,6 @@ from common import (AccessDeniedError, AddContactRequest, AuthRequest,
 from config import server_config as config
 from db import ServerStorage
 from log import server_logger as logger
-from server_gui import (ClientsWindow, ConfigWindow, MainWindow,
-                        create_active_clients_table, create_clients_table)
 
 
 class JimServer(threading.Thread, metaclass=ServerMeta):

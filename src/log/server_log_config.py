@@ -7,7 +7,7 @@ from config import server_config as config
 
 _format = logging.Formatter(config.log_format)
 
-log_filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), "server.log")
+log_filename = os.path.join(os.getcwd(), "server.log")
 
 
 _console_handler = logging.StreamHandler(sys.stderr)

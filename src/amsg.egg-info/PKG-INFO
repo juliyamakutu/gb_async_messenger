@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: amsg
+Version: 0.5
+Summary: GB async messenger
+Author-email: Yuliya Bryukhovskikh <makutu@ereb.ru>
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# amsg
+GeekBrains Python Advanced course homeworks. Asynchronous messaging.
